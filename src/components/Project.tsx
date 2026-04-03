@@ -1,53 +1,134 @@
-import React from "react";
-import blog from '../assets/images/blog.png';
+import React, { useState } from "react";
+import LaunchIcon from "@mui/icons-material/Launch";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import blog   from "../assets/images/blog.png";
+import coun   from "../assets/images/coun.png";
+import port   from "../assets/images/port.png";
+import member from "../assets/images/member.png";
+import desk   from "../assets/images/desk.jpg";
+import wild   from "../assets/images/wild.png";
+import "../assets/styles/Project.scss";
 
-import coun from '../assets/images/coun.png';
-import port from '../assets/images/port.png';
-import member from '../assets/images/member.png';
-import desk from '../assets/images/desk.jpg';
-import wild from '../assets/images/wild.png';
-import '../assets/styles/Project.scss';
+const PROJECTS = [
+  {
+    image: wild,
+    title: "Wild Swimming & Camping Site",
+    desc: "A multi-page website promoting camping and wild swimming facilities, with a focus on responsive design and visual appeal.",
+    live: "https://riley071.github.io/Camping-Site-Multipage-Website-/",
+    repo: "https://riley071.github.io/Camping-Site-Multipage-Website-/",
+    tags: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    image: desk,
+    title: "Help Desk Management System",
+    desc: "A software application allowing organizations to manage and track customer support requests efficiently.",
+    live: "https://github.com/riley071/Help-Desk-Management-System-php-",
+    repo: "https://github.com/riley071/Help-Desk-Management-System-php-",
+    tags: ["PHP", "MySQL", "Bootstrap"],
+  },
+  {
+    image: member,
+    title: "Membership Management System",
+    desc: "A full membership system with an admin panel for managing members and club records, built with PHP and Bootstrap.",
+    live: "https://github.com/riley071/Membership-Managment-system-php",
+    repo: "https://github.com/riley071/Membership-Managment-system-php",
+    tags: ["PHP", "MySQL", "Bootstrap"],
+  },
+  {
+    image: port,
+    title: "Portfolio Website v1",
+    desc: "A responsive, stylish portfolio website built with Bootstrap 5 — the predecessor to this site.",
+    live: "https://riley071.github.io/my-protifilo-website/",
+    repo: "https://riley071.github.io/my-protifilo-website/",
+    tags: ["Bootstrap", "HTML", "CSS"],
+  },
+  {
+    image: coun,
+    title: "Counselling Services System",
+    desc: "A counselling services system for Vintage Wellness Centre, replacing a manual system with a streamlined digital solution.",
+    live: "",
+    repo: "",
+    tags: ["PHP", "MySQL", "JavaScript"],
+  },
+  {
+    image: blog,
+    title: "Blog Application",
+    desc: "A CRUD blog app leveraging LocalStorage — users can create, edit, delete, and browse posts with no backend required.",
+    live: "https://riley071.github.io/Blog-application/",
+    repo: "https://riley071.github.io/Blog-application/",
+    tags: ["JavaScript", "LocalStorage", "CSS"],
+  },
+];
 
 function Project() {
-    return(
-    <div className="projects-container" id="projects">
-        <h1>Personal Projects</h1>
-        <div className="projects-grid">
-            <div className="project">
-                <a href="https://riley071.github.io/Camping-Site-Multipage-Website-/" target="_blank" rel="noreferrer"><img src={wild} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://riley071.github.io/Camping-Site-Multipage-Website-/" target="_blank" rel="noreferrer"><h2>Wild Swimming and Camping Site </h2></a>
-                <p>An online website to help them promote its facilities to those that enjoy camping and swimming the wilds.</p>
-            </div>
-            <div className="project">
-                <a href="https://github.com/riley071/Help-Desk-Management-System-php-" target="_blank" rel="noreferrer"><img src={desk} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://github.com/riley071/Help-Desk-Management-System-php-" target="_blank" rel="noreferrer"><h2>Help-Desk-Management-System-php</h2></a>
-                <p>A help desk management system is a software application that allows organizations to manage and track customer support requests.</p>
-            </div>
-            <div className="project">
-                <a href="https://github.com/riley071/Membership-Managment-system-php" target="_blank" rel="noreferrer"><img src={member} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://github.com/riley071/Membership-Managment-system-php" target="_blank" rel="noreferrer"><h2>Membership Managment system php</h2></a>
-                <p>Simple Membership System is developed using PHP, CSS, Bootstrap, and JavaScript. Talking about the project, it contains an admin side where a user can manage all the members and clubs record easily.</p>
-            </div>
-            <div className="project">
-                <a href="https://riley071.github.io/my-protifilo-website/" target="_blank" rel="noreferrer"><img src={port} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://riley071.github.io/my-protifilo-website/" target="_blank" rel="noreferrer"><h2>Portifilo Site</h2></a>
-                <p>A responsive and stylish portfolio website built using Bootstrap 5, showcasing my skills and projects.</p>
+  const [hovered, setHovered] = useState<number | null>(null);
 
-            </div>
-            <div className="project">
-                <a href="" target="_blank" rel="noreferrer"><img src={coun} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="" target="_blank" rel="noreferrer"><h2>Counselling Services System </h2></a>
-                <p>The primary purpose of this project is establishing a counseling services system for Vintage Wellness Centre to eliminate the challenges that the organization was having at the expense of its current system..</p>
-            </div>
-                     
-            <div className="project">
-                <a href="https://riley071.github.io/Blog-application/" target="_blank" rel="noreferrer"><img src={blog} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://riley071.github.io/Blog-application/" target="_blank" rel="noreferrer"><h2>Blog Application</h2></a>
-                <p>Blog Application is an application where user can add a new blog, edit it, delete it as well as view other blogs and make changes in them. Application uses LocalStorage, the localStorage object stores data with no expiration date.</p>
-            </div>
+  return (
+    <section className="proj-section" id="projects">
+      <div className="proj-wrap">
+        <div className="section-header" style={{ textAlign: "center" }}>
+          <span className="section-label">Portfolio</span>
+          <h1 className="section-title">
+            Featured <span className="highlight">Projects</span>
+          </h1>
+          <p className="section-subtitle">
+            A selection of things I've designed and built — from landing pages to full systems.
+          </p>
         </div>
-    </div>
-    );
+
+        <div className="proj-grid">
+          {PROJECTS.map((p, i) => (
+            <article
+              key={i}
+              className={`proj-card ${hovered === i ? "is-hovered" : ""}`}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              {/* Thumbnail */}
+              <div className="proj-thumb">
+                <img src={p.image} alt={p.title} loading="lazy" />
+                <div className="proj-overlay">
+                  <div className="proj-links">
+                    {p.live && (
+                      <a
+                        href={p.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="proj-link-btn"
+                      >
+                        <LaunchIcon sx={{ fontSize: 16 }} /> Live Demo
+                      </a>
+                    )}
+                    {p.repo && (
+                      <a
+                        href={p.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="proj-link-btn ghost"
+                      >
+                        <GitHubIcon sx={{ fontSize: 16 }} /> Code
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Info */}
+              <div className="proj-info">
+                <div className="proj-tags">
+                  {p.tags.map((t, ti) => (
+                    <span key={ti} className="proj-tag">{t}</span>
+                  ))}
+                </div>
+                <h2 className="proj-title">{p.title}</h2>
+                <p className="proj-desc">{p.desc}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default Project;
