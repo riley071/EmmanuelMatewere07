@@ -1,48 +1,193 @@
-.contact_wrapper svg {
-  font-size: 1em;
-  vertical-align: middle;
-  margin-right: 5px;
+.contact-section {
+  padding: 8rem 2rem;
+  background: var(--bg-secondary);
 }
 
-.contact-form {
-  padding-top: 20px;
-
-  button {
-    float: right;
-    background-color: white;
-    color: #050f0b;
-  }
-
-  button:hover {
-    background-color: #5000ca;
-    color: white;
-  }
-
-  fieldset {
-    background-color: white;
-  }
+.contact-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-label {
-  font-size: 1.2rem;
-  font-family: 'DomaineDispNar-Medium', sans-serif;
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 5rem;
+  align-items: start;
 }
 
-.form-flex {
+/* ── Info panel ─────────────────────────────────────── */
+.info-intro {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 2.25rem;
+}
+
+.info-details {
+  list-style: none;
   display: flex;
-  gap: 15px;
-  padding-bottom: 15px;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin-bottom: 2.25rem;
 }
 
-.form-flex .MuiFormControl-root {
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.info-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(255,107,53,0.1);
+  border: 1px solid rgba(255,107,53,0.2);
+  color: var(--accent-orange);
+}
+
+.info-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.info-value {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.info-link {
+  color: var(--accent-orange);
+  &:hover { text-decoration: underline; }
+}
+
+/* Availability badge */
+.avail-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.15rem;
+  background: rgba(0,212,170,0.08);
+  border: 1px solid rgba(0,212,170,0.28);
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+}
+
+.avail-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent-teal);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.75); }
+}
+
+/* ── Form ───────────────────────────────────────────── */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.success-toast {
+  padding: 0.9rem 1.4rem;
+  background: rgba(0,212,170,0.1);
+  border: 1px solid rgba(0,212,170,0.3);
+  border-radius: 12px;
+  color: var(--accent-teal);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+}
+
+.field-input {
   width: 100%;
+  padding: 0.875rem 1.15rem;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+
+  &::placeholder { color: var(--text-muted); }
+
+  &:focus {
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 0 3px rgba(255,107,53,0.12);
+  }
+
+  &.has-error {
+    border-color: #ef4444;
+    &:focus { box-shadow: 0 0 0 3px rgba(239,68,68,0.12); }
+  }
 }
 
-form {
-  width: 100% !important;
+.field-textarea {
+  resize: vertical;
+  min-height: 130px;
 }
 
-.body-form {
-  width: 100% !important;
-  margin-bottom: 15px !important;
+.field-error {
+  font-size: 0.76rem;
+  color: #f87171;
+}
+
+.send-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 2rem;
+  background: linear-gradient(135deg, var(--accent-orange), #e05525);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 4px 22px rgba(255,107,53,0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(255,107,53,0.5);
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
 }
