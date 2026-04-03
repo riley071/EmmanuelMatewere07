@@ -134,9 +134,4 @@ function Contact() {
 }
 
 export default Contact;
-      </div>
-    </div>
-  );
-}
-
-export default Contact;
+   
