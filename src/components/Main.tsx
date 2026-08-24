@@ -2,19 +2,21 @@ import React, { useEffect, useState } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
 import "../assets/styles/Main.scss";
 
 const ROLES = [
   "Full Stack Developer",
-  "UI/UX Designer",
-  "Database Engineer",
-  "Digital Marketer",
+  "React Developer",
+  "PHP & MySQL Developer",
+  "Digital Systems Expert",
 ];
 
 function Main() {
-  const [roleIdx, setRoleIdx]   = useState(0);
+  const [roleIdx, setRoleIdx] = useState(0);
   const [displayed, setDisplayed] = useState("");
-  const [typing, setTyping]     = useState(true);
+  const [typing, setTyping] = useState(true);
 
   /* Typewriter effect */
   useEffect(() => {
@@ -23,7 +25,10 @@ function Main() {
 
     if (typing) {
       if (displayed.length < current.length) {
-        timer = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 75);
+        timer = setTimeout(
+          () => setDisplayed(current.slice(0, displayed.length + 1)),
+          75,
+        );
       } else {
         timer = setTimeout(() => setTyping(false), 2200);
       }
@@ -66,12 +71,17 @@ function Main() {
           </p>
 
           <p className="hero-bio">
-            I build robust web applications and design intuitive digital
-            experiences. Based in Malawi&nbsp;🇲🇼 — working with clients worldwide.
+            Computing Information Systems graduate with expertise in building
+            robust web applications, managing digital banking systems, and
+            designing intuitive user experiences. Based in Blantyre, Malawi 🇲🇼 —
+            working with clients worldwide.
           </p>
 
           <div className="hero-cta">
-            <button className="btn-primary" onClick={() => scrollTo("projects")}>
+            <button
+              className="btn-primary"
+              onClick={() => scrollTo("projects")}
+            >
               View My Work <span className="btn-arrow">→</span>
             </button>
             <button className="btn-ghost" onClick={() => scrollTo("contact")}>
@@ -96,6 +106,9 @@ function Main() {
             >
               <LinkedInIcon sx={{ fontSize: 16 }} /> LinkedIn
             </a>
+            <a href="tel:+265882944267" className="social-pill">
+              <PhoneIcon sx={{ fontSize: 16 }} /> Call Me
+            </a>
           </div>
         </div>
 
@@ -104,9 +117,9 @@ function Main() {
           <div className="avatar-ring">
             <div className="avatar-core">EM</div>
           </div>
-          <div className="float-card fc-1">⚛️ React Developer</div>
-          <div className="float-card fc-2">🎨 UI / UX Design</div>
-          <div className="float-card fc-3">🗄️ Database Expert</div>
+          <div className="float-card fc-1">⚛️ React & Full Stack</div>
+          <div className="float-card fc-2">🏦 Digital Banking</div>
+          <div className="float-card fc-3">🗄️ PHP & MySQL</div>
         </div>
       </div>
 
@@ -114,9 +127,9 @@ function Main() {
       <div className="hero-stats">
         {[
           { num: "2+", label: "Years Experience" },
-          { num: "6+", label: "Projects Built" },
-          { num: "6",  label: "Skill Domains" },
-          { num: "∞",  label: "Passion for Code" },
+          { num: "10+", label: "Projects Built" },
+          { num: "8+", label: "Tech Skills" },
+          { num: "100%", label: "Dedicated to Excellence" },
         ].map(({ num, label }, i) => (
           <React.Fragment key={label}>
             {i > 0 && <div className="stat-sep" />}
