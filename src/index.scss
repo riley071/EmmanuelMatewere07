@@ -1,26 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap");
 
 /* ── Design Tokens ─────────────────────────────────── */
 :root {
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-display: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
 
   /* Dark palette */
-  --bg-primary:   #08080f;
+  --bg-primary: #08080f;
   --bg-secondary: #0e0e1a;
-  --bg-card:      rgba(255, 255, 255, 0.04);
-  --bg-card-hover:rgba(255, 255, 255, 0.08);
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
   --text-primary: #f0f0f5;
-  --text-secondary:#9090a8;
-  --text-muted:   #52526a;
-  --border:       rgba(255, 255, 255, 0.07);
+  --text-secondary: #9090a8;
+  --text-muted: #52526a;
+  --border: rgba(255, 255, 255, 0.07);
   --border-hover: rgba(255, 107, 53, 0.45);
 
   /* Accent system */
   --accent-orange: #ff6b35;
   --accent-purple: #7c3aed;
-  --accent-teal:   #00d4aa;
-  --orange-glow:   rgba(255, 107, 53, 0.15);
+  --accent-teal: #00d4aa;
+  --orange-glow: rgba(255, 107, 53, 0.15);
 
   /* Motion */
   --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -28,8 +28,16 @@
 }
 
 /* ── Reset ─────────────────────────────────────────── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
@@ -38,23 +46,41 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
-h1, h2, h3, h4, h5 { font-family: var(--font-display); }
-a { text-decoration: none; }
-button { cursor: pointer; font-family: inherit; }
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display);
+}
+a {
+  text-decoration: none;
+}
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
 
 /* ── Wrappers ───────────────────────────────────────── */
 .main-container {
   position: relative;
   min-height: 100vh;
-  transition: background-color 0.6s var(--ease-out), color 0.6s var(--ease-out);
+  transition:
+    background-color 0.6s var(--ease-out),
+    color 0.6s var(--ease-out);
 }
 
 /* ── Scroll progress bar ───────────────────────────── */
 .scroll-progress-bar {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent-orange), var(--accent-purple));
+  background: linear-gradient(
+    90deg,
+    var(--accent-orange),
+    var(--accent-purple)
+  );
   z-index: 9999;
   transition: width 0.1s linear;
   border-radius: 0 2px 2px 0;
@@ -67,7 +93,10 @@ button { cursor: pointer; font-family: inherit; }
   pointer-events: none;
   z-index: 1;
   opacity: 0.028;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 0.7px, transparent 0.7px);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.16) 0.7px,
+    transparent 0.7px
+  );
   background-size: 200px;
 }
 
@@ -103,7 +132,11 @@ button { cursor: pointer; font-family: inherit; }
 
 /* ── Highlight gradient text ───────────────────────── */
 .highlight {
-  background: linear-gradient(135deg, var(--accent-orange) 30%, var(--accent-purple));
+  background: linear-gradient(
+    135deg,
+    var(--accent-orange) 30%,
+    var(--accent-purple)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

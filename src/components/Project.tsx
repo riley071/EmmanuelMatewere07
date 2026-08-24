@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import LaunchIcon from "@mui/icons-material/Launch";
 import "../assets/styles/Project.scss";
 
 const PROJECTS = [
   {
-    image: null,
     category: "Business / Reporting System",
     title: "NBS Sales Reporting System",
+    shortTitle: "Sales intelligence",
+    mark: "NBS",
+    accent: "orange",
     desc: "An automated sales reporting platform designed to track and monitor digital banking sales performance. The system generates daily and weekly performance reports, reducing manual processes and improving accuracy.",
     highlights: [
       "Automated daily and weekly sales reporting",
@@ -18,9 +20,11 @@ const PROJECTS = [
     tags: ["React", "PHP", "MySQL"],
   },
   {
-    image: null,
     category: "E-commerce Platform",
     title: "ThreadMW",
+    shortTitle: "Fashion storefront",
+    mark: "T",
+    accent: "coral",
     desc: "A modern fashion e-commerce platform delivering a seamless online shopping experience. Built with responsive design and performance optimization to engage customers and drive conversions.",
     highlights: [
       "Responsive product browsing and filtering",
@@ -32,9 +36,11 @@ const PROJECTS = [
     tags: ["React", "Tailwind CSS", "Supabase", "PayChangu"],
   },
   {
-    image: null,
     category: "Digital Marketplace",
     title: "NsimaBeats",
+    shortTitle: "Music marketplace",
+    mark: "N",
+    accent: "teal",
     desc: "A digital music marketplace connecting artists with customers through secure online music sales and instant delivery. Streamlines the process of discovering, purchasing, and downloading music.",
     highlights: [
       "Secure user authentication and authorization",
@@ -46,9 +52,11 @@ const PROJECTS = [
     tags: ["React", "Supabase", "File Management"],
   },
   {
-    image: null,
     category: "E-commerce / Business Website",
     title: "Sekulu265",
+    shortTitle: "Footwear commerce",
+    mark: "S",
+    accent: "lime",
     desc: "A modern online footwear and fashion storefront showcasing and selling products. Designed with user-centric approach to maximize conversions and deliver exceptional shopping experience.",
     highlights: [
       "Responsive e-commerce storefront",
@@ -62,76 +70,105 @@ const PROJECTS = [
 ];
 
 function Project() {
-  const [hovered, setHovered] = useState<number | null>(null);
-
   return (
     <section className="proj-section" id="projects">
       <div className="proj-wrap">
-        <div className="section-header" style={{ textAlign: "center" }}>
+        <div className="section-header proj-header">
           <span className="section-label">Selected Projects</span>
           <h1 className="section-title">
             Featured <span className="highlight">Work</span>
           </h1>
           <p className="section-subtitle">
-            A selection of web applications, business systems and digital
-            platforms I have designed and developed. My work ranges from
-            internal business solutions and reporting systems to e-commerce
-            platforms and digital marketplaces.
+            Digital products designed to make complex work feel simple, useful,
+            and distinctly human.
           </p>
         </div>
 
         <div className="proj-grid">
-          {PROJECTS.map((p, i) => (
-            <article
-              key={i}
-              className={`proj-card ${hovered === i ? "is-hovered" : ""}`}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              {/* Thumbnail / Visual */}
+          {PROJECTS.map((p) => (
+            <article key={p.title} className={`proj-card accent-${p.accent}`}>
               <div className="proj-thumb">
-                <div className="proj-visual-placeholder">
-                  <span className="proj-category">{p.category}</span>
+                <div className="browser-bar">
+                  <span />
+                  <span />
+                  <span />
+                  <small>emmanuelmatewere.dev / {p.title}</small>
                 </div>
-                <div className="proj-overlay">
-                  <div className="proj-links">
-                    {p.live && (
-                      <a
-                        href={p.live}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="proj-link-btn"
-                      >
-                        <LaunchIcon sx={{ fontSize: 16 }} /> Visit Website
-                      </a>
-                    )}
+                <div className="proj-preview">
+                  <div className="preview-brand">
+                    <strong>{p.mark}</strong>
+                    <span>{p.shortTitle}</span>
                   </div>
+                  <div className="preview-layout">
+                    <div className="preview-sidebar">
+                      <i />
+                      <i />
+                      <i />
+                      <i />
+                    </div>
+                    <div className="preview-content">
+                      <span className="preview-kicker">Overview</span>
+                      <div className="preview-heading" />
+                      <div className="preview-metrics">
+                        <i />
+                        <i />
+                        <i />
+                      </div>
+                      <div className="preview-chart">
+                        <b />
+                        <b />
+                        <b />
+                        <b />
+                        <b />
+                        <b />
+                        <b />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="preview-caption">
+                  <span>{p.category}</span>
+                  <span className="preview-status">Live project</span>
                 </div>
               </div>
 
-              {/* Info */}
               <div className="proj-info">
+                <div className="proj-topline">
+                  <span className="proj-index">0{PROJECTS.indexOf(p) + 1}</span>
+                  <div className="proj-tags">
+                    {p.tags.map((t) => (
+                      <span key={t} className="proj-tag">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
                 <h2 className="proj-title">{p.title}</h2>
                 <p className="proj-desc">{p.desc}</p>
 
-                {/* Highlights */}
                 <div className="proj-highlights">
                   <span className="highlights-label">Key Features:</span>
                   <ul className="highlights-list">
-                    {p.highlights.map((h, hi) => (
-                      <li key={hi}>{h}</li>
+                    {p.highlights.map((h) => (
+                      <li key={h}>{h}</li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Technologies */}
-                <div className="proj-tags">
-                  {p.tags.map((t, ti) => (
-                    <span key={ti} className="proj-tag">
-                      {t}
-                    </span>
-                  ))}
-                </div>
+                {p.live ? (
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="proj-action"
+                  >
+                    Open live preview <LaunchIcon sx={{ fontSize: 17 }} />
+                  </a>
+                ) : (
+                  <span className="proj-action is-private">
+                    Private internal system
+                  </span>
+                )}
               </div>
             </article>
           ))}
