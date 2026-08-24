@@ -5,18 +5,25 @@ import "../assets/styles/Timeline.scss";
 
 const CAREER = [
   {
+    role: "National Sales Intern",
+    company: "NBS Bank",
+    date: "Nov 2025 – Mar 2026",
+    desc: "Promoted and sold NBS digital banking products, assisted with customer account creation and digital product registration, and resolved banking service issues efficiently.",
+    tags: ["Digital Banking", "Sales", "Customer Service"],
+  },
+  {
+    role: "Digital Banking Intern",
+    company: "NBS Bank",
+    date: "Mar 2025 – Nov 2025",
+    desc: "Managed customer registrations for digital banking platforms, provided end-user support, logged and tracked service tickets, and supported digital product adoption at branch level.",
+    tags: ["Banking Systems", "Support", "Troubleshooting", "Ticket Management"],
+  },
+  {
     role: "Full Stack Developer",
     company: "ModriTech Solutions",
     date: "Sep 2023 – Jun 2024",
-    desc: "Developed and deployed websites and systems, managed both design and coding processes, and built automated reporting tools using Python and SQL.",
-    tags: ["React", "Python", "SQL", "DevOps"],
-  },
-  {
-    role: "Junior Web Developer",
-    company: "Grafix Resolution Limited",
-    date: "Sep 2022 – Apr 2023",
-    desc: "Assisted in website development, conducted quality assessments of graphic materials, and supported database processing activities.",
-    tags: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
+    desc: "Developed and deployed full-stack web applications handling both front-end and back-end development, implemented system features, and built automated reporting tools using Python and SQL.",
+    tags: ["React", "PHP", "MySQL", "Python", "SQL", "DevOps"],
   },
 ];
 
@@ -40,6 +47,19 @@ const EDUCATION = [
     degree: "Malawi School Certificate of Education (MSCE)",
     institution: "Michiri View Boys Secondary School",
     date: "2017",
+  },
+];
+
+const CERTIFICATIONS = [
+  {
+    title: "Huawei Seeds for the Future Program",
+    issuer: "Huawei Technologies",
+    year: "2021",
+  },
+  {
+    title: "Google Digital Marketing Certification",
+    issuer: "Google",
+    year: "2021",
   },
 ];
 
@@ -95,6 +115,25 @@ function Timeline() {
                   <span className="tl-date">{item.date}</span>
                   <h3 className="tl-role">{item.degree}</h3>
                   <h4 className="tl-company">{item.institution}</h4>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Certifications */}
+          <div className="section-header" style={{ marginTop: "3rem" }}>
+            <span className="section-label">Certifications</span>
+          </div>
+          <div className="tl-list">
+            {CERTIFICATIONS.map((item, i) => (
+              <div className="tl-item" key={i}>
+                <div className="tl-icon edu">
+                  <FontAwesomeIcon icon={faGraduationCap} />
+                </div>
+                <div className="tl-body">
+                  <span className="tl-date">{item.year}</span>
+                  <h3 className="tl-role">{item.title}</h3>
+                  <h4 className="tl-company">{item.issuer}</h4>
                 </div>
               </div>
             ))}
