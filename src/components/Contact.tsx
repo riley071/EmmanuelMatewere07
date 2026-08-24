@@ -3,6 +3,8 @@ import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import SendIcon from "@mui/icons-material/Send";
+// The SCSS file is handled by the bundler and has no TypeScript declarations.
+// @ts-expect-error -- stylesheet side-effect import
 import "../assets/styles/Contact.scss";
 
 function Contact() {

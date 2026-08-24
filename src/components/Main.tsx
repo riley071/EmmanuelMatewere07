@@ -4,6 +4,8 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
+// SCSS is handled by the bundler; TypeScript has no module declaration for it.
+// @ts-expect-error — side-effect stylesheet import
 import "../assets/styles/Main.scss";
 
 const ROLES = [
@@ -71,15 +73,10 @@ function Main() {
           </p>
 
           <p className="hero-bio">
-<<<<<<< HEAD
             Computing Information Systems graduate with expertise in building
             robust web applications, managing digital banking systems, and
             designing intuitive user experiences. Based in Blantyre, Malawi 🇲🇼 —
             working with clients worldwide.
-=======
-            Computing Information Systems graduate with expertise in building robust web applications,
-            managing digital banking systems, and designing intuitive user experiences. Based in Blantyre, Malawi 🇲🇼 — working with clients worldwide.
->>>>>>> 3786a4dcdb2589020d313aa95cd4a9a6469b6a7f
           </p>
 
           <div className="hero-cta">
@@ -111,14 +108,7 @@ function Main() {
             >
               <LinkedInIcon sx={{ fontSize: 16 }} /> LinkedIn
             </a>
-<<<<<<< HEAD
             <a href="tel:+265882944267" className="social-pill">
-=======
-            <a
-              href="tel:+265882944267"
-              className="social-pill"
-            >
->>>>>>> 3786a4dcdb2589020d313aa95cd4a9a6469b6a7f
               <PhoneIcon sx={{ fontSize: 16 }} /> Call Me
             </a>
           </div>

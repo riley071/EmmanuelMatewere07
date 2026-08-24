@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LaunchIcon from "@mui/icons-material/Launch";
 import GitHubIcon from "@mui/icons-material/GitHub";
+// @ts-ignore SCSS is loaded by the bundler and has no TypeScript declarations.
 import "../assets/styles/Project.scss";
 
 const PROJECTS = [
@@ -12,11 +13,7 @@ const PROJECTS = [
     highlights: [
       "Automated daily and weekly sales reporting",
       "Real-time performance tracking",
-<<<<<<< HEAD
       "Reduced manual reporting by 80%",
-=======
-      "Reduced manual reporting by 80%"
->>>>>>> 3786a4dcdb2589020d313aa95cd4a9a6469b6a7f
     ],
     live: "",
     repo: "",
@@ -30,11 +27,7 @@ const PROJECTS = [
     highlights: [
       "Responsive product browsing and filtering",
       "Mobile-first user experience",
-<<<<<<< HEAD
       "SEO and performance optimized",
-=======
-      "SEO and performance optimized"
->>>>>>> 3786a4dcdb2589020d313aa95cd4a9a6469b6a7f
     ],
     live: "https://threadmw.com",
     repo: "https://threadmw.com",
@@ -48,11 +41,7 @@ const PROJECTS = [
     highlights: [
       "Secure user authentication and authorization",
       "Digital file storage and delivery system",
-<<<<<<< HEAD
       "Artist and customer management dashboards",
-=======
-      "Artist and customer management dashboards"
->>>>>>> 3786a4dcdb2589020d313aa95cd4a9a6469b6a7f
     ],
     live: "https://nsimabeats.com",
     repo: "https://nsimabeats.com",
@@ -66,11 +55,7 @@ const PROJECTS = [
     highlights: [
       "Responsive e-commerce storefront",
       "Product browsing and category navigation",
-<<<<<<< HEAD
       "Mobile-optimized checkout experience",
-=======
-      "Mobile-optimized checkout experience"
->>>>>>> 3786a4dcdb2589020d313aa95cd4a9a6469b6a7f
     ],
     live: "https://sekulu265.com",
     repo: "https://sekulu265.com",
@@ -90,15 +75,10 @@ function Project() {
             Featured <span className="highlight">Work</span>
           </h1>
           <p className="section-subtitle">
-<<<<<<< HEAD
             A selection of web applications, business systems and digital
             platforms I have designed and developed. My work ranges from
             internal business solutions and reporting systems to e-commerce
             platforms and digital marketplaces.
-=======
-            A selection of web applications, business systems and digital platforms I have designed and developed. 
-            My work ranges from internal business solutions and reporting systems to e-commerce platforms and digital marketplaces.
->>>>>>> 3786a4dcdb2589020d313aa95cd4a9a6469b6a7f
           </p>
         </div>
 
@@ -149,13 +129,9 @@ function Project() {
                 {/* Technologies */}
                 <div className="proj-tags">
                   {p.tags.map((t, ti) => (
-<<<<<<< HEAD
                     <span key={ti} className="proj-tag">
                       {t}
                     </span>
-=======
-                    <span key={ti} className="proj-tag">{t}</span>
->>>>>>> 3786a4dcdb2589020d313aa95cd4a9a6469b6a7f
                   ))}
                 </div>
               </div>
