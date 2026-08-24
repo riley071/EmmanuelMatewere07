@@ -3,7 +3,6 @@ import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import SendIcon from "@mui/icons-material/Send";
-import PhoneIcon from "@mui/icons-material/Phone";
 import "../assets/styles/Contact.scss";
 
 function Contact() {
@@ -47,8 +46,7 @@ function Contact() {
             Let's <span className="highlight">Work Together</span>
           </h1>
           <p className="section-subtitle">
-            Have a project in mind? I'm available for freelance work and
-            full-time opportunities.
+            Have a project in mind? I'd love to hear about it.
           </p>
         </div>
 
@@ -56,10 +54,9 @@ function Contact() {
           {/* ── Info panel ── */}
           <aside className="contact-info">
             <p className="info-intro">
-              I'm a full-stack developer with expertise in React, PHP, and
-              digital banking systems. Whether you need a web application,
-              backend development, or technical consulting — I'm ready to help
-              bring your ideas to life.
+              I'm currently available for freelance projects and full-time
+              opportunities. Whether you need a website, a web application, or
+              digital strategy — let's connect.
             </p>
 
             <ul className="info-details" role="list">
@@ -67,19 +64,13 @@ function Contact() {
                 {
                   icon: <EmailIcon />,
                   label: "Email",
-                  value: "emzomatewere@gmail.com",
-                  href: "mailto:emzomatewere@gmail.com",
-                },
-                {
-                  icon: <PhoneIcon />,
-                  label: "Phone",
-                  value: "(+265) 88 294 4267",
-                  href: "tel:+265882944267",
+                  value: "emmanuelmatewere@gmail.com",
+                  href: "mailto:emmanuelmatewere@gmail.com",
                 },
                 {
                   icon: <LocationOnIcon />,
                   label: "Location",
-                  value: "Blantyre, Malawi",
+                  value: "Lilongwe, Malawi",
                   href: null,
                 },
                 {
