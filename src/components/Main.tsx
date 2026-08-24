@@ -3,9 +3,6 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PhoneIcon from "@mui/icons-material/Phone";
-import EmailIcon from "@mui/icons-material/Email";
-// SCSS is handled by the bundler; TypeScript has no module declaration for it.
-// @ts-expect-error — side-effect stylesheet import
 import "../assets/styles/Main.scss";
 
 const ROLES = [

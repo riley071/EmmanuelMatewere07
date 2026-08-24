@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import LaunchIcon from "@mui/icons-material/Launch";
-import GitHubIcon from "@mui/icons-material/GitHub";
-// @ts-ignore SCSS is loaded by the bundler and has no TypeScript declarations.
 import "../assets/styles/Project.scss";
 
 const PROJECTS = [

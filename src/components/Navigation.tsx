@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import LightModeIcon from "@mui/icons-material/LightMode";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import "../assets/styles/Navigation.scss";
 
 const NAV_ITEMS = [
   { label: "Expertise", id: "expertise" },
-  { label: "History",   id: "history"   },
-  { label: "Projects",  id: "projects"  },
-  { label: "Contact",   id: "contact"   },
+  { label: "History", id: "history" },
+  { label: "Projects", id: "projects" },
+  { label: "Contact", id: "contact" },
 ];
 
-function Navigation({ parentToChild, modeChange }: any) {
-  const { mode } = parentToChild;
-  const [mobileOpen, setMobileOpen]   = useState(false);
-  const [scrolled, setScrolled]       = useState(false);
-  const [activeSection, setActive]    = useState("");
+type NavigationProps = {
+  parentToChild: { mode: string };
+  modeChange: () => void;
+};
+
+function Navigation(_props: NavigationProps) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => {
@@ -57,7 +59,7 @@ function Navigation({ parentToChild, modeChange }: any) {
           </button>
 
           {/* Desktop links */}
-          <ul className="nav-links" role="list">
+          <ul className="nav-links">
             {NAV_ITEMS.map(({ label, id }) => (
               <li key={id}>
                 <button
@@ -73,13 +75,6 @@ function Navigation({ parentToChild, modeChange }: any) {
 
           {/* Actions */}
           <div className="nav-actions">
-            <button className="icon-btn" onClick={modeChange} aria-label="Toggle theme">
-              {mode === "dark" ? (
-                <LightModeIcon fontSize="small" />
-              ) : (
-                <DarkModeIcon fontSize="small" />
-              )}
-            </button>
             <button
               className="icon-btn mobile-trigger"
               onClick={() => setMobileOpen((v) => !v)}
