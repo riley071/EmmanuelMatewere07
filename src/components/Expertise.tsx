@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faReact, faFirefoxBrowser, faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { faComputer, faPaintBrush } from "@fortawesome/free-solid-svg-icons";
-import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
+import { faReact, faDatabase, faPython } from "@fortawesome/free-brands-svg-icons";
+import { faComputer, faBriefcase, faCode } from "@fortawesome/free-solid-svg-icons";
 import "../assets/styles/Expertise.scss";
 
 const SKILLS = [
@@ -10,43 +9,43 @@ const SKILLS = [
     icon: faReact,
     color: "#61dafb",
     title: "Full Stack Development",
-    desc: "Experienced in developing and deploying web applications using PHP, React, and MySQL. Strong background in designing, coding, and optimizing websites while ensuring seamless integration with databases and APIs.",
+    desc: "Experienced in developing and deploying web applications using React.js, PHP, JavaScript, and MySQL. Strong expertise in designing responsive interfaces, building server-side logic, and optimizing performance across all platforms.",
     tags: ["React", "JavaScript", "PHP", "HTML5", "CSS3", "Tailwind CSS", "MySQL", "API Integration", "Git"],
   },
   {
-    icon: faComputer,
+    icon: faDatabase,
     color: "#00d4aa",
-    title: "IT Support & Systems",
-    desc: "Hands-on experience troubleshooting software and hardware issues, maintaining systems, and ensuring security updates. Proficient in cloud deployment, DevOps processes, and task automation.",
-    tags: ["System Maintenance", "Troubleshooting", "Microsoft Office Suite"],
+    title: "Digital Banking & Systems",
+    desc: "Hands-on experience with digital banking platforms, customer onboarding, payment processing, and service support. Proficient in troubleshooting banking applications and managing customer technical issues.",
+    tags: ["Digital Banking", "Troubleshooting", "Customer Support", "System Maintenance", "ATM/Card Systems"],
   },
   {
-    icon: faPaintBrush,
+    icon: faComputer,
     color: "#ff6b35",
-    title: "UI / UX Design",
-    desc: "Skilled in designing user-friendly interfaces and enhancing user experiences using modern design tools and research-driven methodologies.",
-    tags: ["Wireframing", "Prototyping", "Figma", "Adobe XD", "User Research", "Design Systems"],
+    title: "IT Support & Systems Administration",
+    desc: "Skilled in end-user technical support, system troubleshooting, ticket management, and maintaining system reliability across multiple devices and platforms.",
+    tags: ["System Maintenance", "Troubleshooting", "Ticket Management", "Remote Support", "Microsoft Office"],
   },
   {
-    icon: faFileAlt,
+    icon: faCode,
     color: "#7c3aed",
-    title: "Database Management",
-    desc: "Expertise in managing, optimizing, and securing relational and non-relational databases for efficient data storage and retrieval.",
-    tags: ["SQL", "NoSQL", "PostgreSQL", "MongoDB", "Database Optimization", "Data Modeling"],
+    title: "Database Design & Optimization",
+    desc: "Expertise in designing, managing, and optimizing MySQL databases. Strong background in data modeling, query optimization, and ensuring data integrity for production systems.",
+    tags: ["MySQL", "SQL", "Database Optimization", "Data Modeling", "Query Design"],
   },
   {
-    icon: faFacebook,
+    icon: faPython,
+    color: "#3776ab",
+    title: "Automation & Reporting",
+    desc: "Experienced in building automated reporting tools and data processing systems using Python and SQL to streamline business operations and improve efficiency.",
+    tags: ["Python", "SQL", "Automation", "Data Processing", "Report Generation"],
+  },
+  {
+    icon: faBriefcase,
     color: "#1877f2",
-    title: "Social Media Management",
-    desc: "Professional management of social media platforms including content creation, audience engagement, analytics tracking, and strategy optimization to enhance brand visibility.",
-    tags: ["Facebook", "Instagram", "Twitter", "LinkedIn", "YouTube"],
-  },
-  {
-    icon: faFirefoxBrowser,
-    color: "#ff9400",
-    title: "Digital Marketing",
-    desc: "Experienced in leveraging digital channels to enhance brand visibility, increase audience engagement, and drive measurable business growth.",
-    tags: ["SEO", "Content Marketing", "Google Ads", "Email Marketing", "Analytics"],
+    title: "Project & Business Analysis",
+    desc: "Professional experience in analyzing business requirements, translating them into technical solutions, and delivering systems that meet organizational needs.",
+    tags: ["Requirements Analysis", "Project Planning", "Business Logic", "Documentation", "Stakeholder Communication"],
   },
 ];
 
@@ -62,7 +61,7 @@ function Expertise() {
             Areas of <span className="highlight">Expertise</span>
           </h1>
           <p className="section-subtitle">
-            A versatile skill set spanning development, design, and digital strategy.
+            Full-stack development, digital systems, and technical problem-solving across web and enterprise platforms.
           </p>
         </div>
 
