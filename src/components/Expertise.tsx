@@ -6,6 +6,9 @@ import {
   faBriefcase,
   faCode,
   faDatabase,
+  faBullhorn,
+  faShareNodes,
+  faPalette,
 } from "@fortawesome/free-solid-svg-icons";
 import "../assets/styles/Expertise.scss";
 
@@ -92,6 +95,45 @@ const SKILLS = [
       "Stakeholder Communication",
     ],
   },
+  {
+    icon: faBullhorn,
+    color: "#f5b942",
+    title: "Digital Marketing",
+    desc: "I help businesses build a stronger digital presence through thoughtful campaign planning, engaging content, and clear marketing strategies that connect with the right audience.",
+    tags: [
+      "Campaign Strategy",
+      "Content Planning",
+      "Brand Awareness",
+      "SEO Basics",
+      "Audience Research",
+    ],
+  },
+  {
+    icon: faShareNodes,
+    color: "#e85d9e",
+    title: "Social Media Management",
+    desc: "Experienced in planning, creating, and managing social media content that keeps brands consistent, visible, and connected with their communities across digital platforms.",
+    tags: [
+      "Content Calendars",
+      "Community Engagement",
+      "Social Campaigns",
+      "Analytics",
+      "Copywriting",
+    ],
+  },
+  {
+    icon: faPalette,
+    color: "#a78bfa",
+    title: "Graphic Design",
+    desc: "I design clean, purposeful visual assets for digital brands, including social media graphics, promotional materials, presentations, and supporting web visuals.",
+    tags: [
+      "Visual Identity",
+      "Social Graphics",
+      "Marketing Materials",
+      "Layout Design",
+      "Brand Consistency",
+    ],
+  },
 ];
 
 function Expertise() {
@@ -100,12 +142,12 @@ function Expertise() {
       <div className="expertise-wrap">
         <div className="section-header" style={{ textAlign: "center" }}>
           <span className="section-label">What I Do</span>
-          <h1 className="section-title">
+          <h2 className="section-title">
             Areas of <span className="highlight">Expertise</span>
-          </h1>
+          </h2>
           <p className="section-subtitle">
-            Full-stack development, digital systems, and technical
-            problem-solving across web and enterprise platforms.
+            Combining technology, digital growth, and visual communication to
+            build useful products and stronger brands.
           </p>
         </div>
 

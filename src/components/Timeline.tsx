@@ -1,6 +1,9 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBriefcase, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBriefcase,
+  faGraduationCap,
+} from "@fortawesome/free-solid-svg-icons";
 import "../assets/styles/Timeline.scss";
 
 const CAREER = [
@@ -16,7 +19,12 @@ const CAREER = [
     company: "NBS Bank",
     date: "Mar 2025 – Nov 2025",
     desc: "Managed customer registrations for digital banking platforms, provided end-user support, logged and tracked service tickets, and supported digital product adoption at branch level.",
-    tags: ["Banking Systems", "Support", "Troubleshooting", "Ticket Management"],
+    tags: [
+      "Banking Systems",
+      "Support",
+      "Troubleshooting",
+      "Ticket Management",
+    ],
   },
   {
     role: "Full Stack Developer",
@@ -67,13 +75,12 @@ function Timeline() {
   return (
     <section className="tl-section" id="history">
       <div className="tl-wrap">
-        {/* Career */}
         <div className="tl-block">
           <div className="section-header">
             <span className="section-label">Work History</span>
-            <h1 className="section-title">
+            <h2 className="section-title">
               Career <span className="highlight">Journey</span>
-            </h1>
+            </h2>
           </div>
           <div className="tl-list">
             {CAREER.map((item, i) => (
@@ -87,8 +94,10 @@ function Timeline() {
                   <h4 className="tl-company">{item.company}</h4>
                   <p className="tl-desc">{item.desc}</p>
                   <div className="tl-tags">
-                    {item.tags.map((t, ti) => (
-                      <span key={ti} className="tl-tag work-tag">{t}</span>
+                    {item.tags.map((tag, tagIndex) => (
+                      <span key={tagIndex} className="tl-tag work-tag">
+                        {tag}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -97,13 +106,12 @@ function Timeline() {
           </div>
         </div>
 
-        {/* Education */}
         <div className="tl-block">
           <div className="section-header">
             <span className="section-label">Academic Background</span>
-            <h1 className="section-title">
+            <h2 className="section-title">
               Education <span className="highlight">Path</span>
-            </h1>
+            </h2>
           </div>
           <div className="tl-list">
             {EDUCATION.map((item, i) => (
@@ -120,7 +128,6 @@ function Timeline() {
             ))}
           </div>
 
-          {/* Certifications */}
           <div className="section-header" style={{ marginTop: "3rem" }}>
             <span className="section-label">Certifications</span>
           </div>

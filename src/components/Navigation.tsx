@@ -5,6 +5,7 @@ import "../assets/styles/Navigation.scss";
 
 const NAV_ITEMS = [
   { label: "Expertise", id: "expertise" },
+  { label: "Design Work", id: "design-work" },
   { label: "History", id: "history" },
   { label: "Projects", id: "projects" },
   { label: "Contact", id: "contact" },

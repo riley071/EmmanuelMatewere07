@@ -3,6 +3,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PhoneIcon from "@mui/icons-material/Phone";
+import DownloadIcon from "@mui/icons-material/Download";
 import "../assets/styles/Main.scss";
 
 const ROLES = [
@@ -56,6 +57,9 @@ function Main() {
       <div className="hero-inner">
         {/* ── Text column ──────────────────────── */}
         <div className="hero-text">
+          <span className="availability">
+            <i /> Available for freelance work
+          </span>
           <span className="hero-greeting">Hello, I'm</span>
 
           <h1 className="hero-name">
@@ -86,6 +90,13 @@ function Main() {
             <button className="btn-ghost" onClick={() => scrollTo("contact")}>
               Get In Touch
             </button>
+            <a
+              className="btn-cv"
+              href={`${process.env.PUBLIC_URL}/CV Emmanuel matewere CURRICULUM VITAE 2026.pdf`}
+              download
+            >
+              <DownloadIcon sx={{ fontSize: 17 }} /> Download CV
+            </a>
           </div>
 
           <div className="hero-socials">

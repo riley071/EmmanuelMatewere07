@@ -42,9 +42,9 @@ function Contact() {
       <div className="contact-wrap">
         <div className="section-header" style={{ textAlign: "center" }}>
           <span className="section-label">Get In Touch</span>
-          <h1 className="section-title">
+          <h2 className="section-title">
             Let's <span className="highlight">Work Together</span>
-          </h1>
+          </h2>
           <p className="section-subtitle">
             Have a project in mind? I'd love to hear about it.
           </p>

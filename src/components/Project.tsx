@@ -75,9 +75,9 @@ function Project() {
       <div className="proj-wrap">
         <div className="section-header proj-header">
           <span className="section-label">Selected Projects</span>
-          <h1 className="section-title">
+          <h2 className="section-title">
             Featured <span className="highlight">Work</span>
-          </h1>
+          </h2>
           <p className="section-subtitle">
             Digital products designed to make complex work feel simple, useful,
             and distinctly human.
