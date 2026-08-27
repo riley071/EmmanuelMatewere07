@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import PhoneIcon from "@mui/icons-material/Phone";
 import SendIcon from "@mui/icons-material/Send";
 import "../assets/styles/Contact.scss";
 
@@ -64,13 +65,19 @@ function Contact() {
                 {
                   icon: <EmailIcon />,
                   label: "Email",
-                  value: "emmanuelmatewere@gmail.com",
-                  href: "mailto:emmanuelmatewere@gmail.com",
+                  value: "emzomatewere@gmail.com",
+                  href: "mailto:emzomatewere@gmail.com",
                 },
                 {
                   icon: <LocationOnIcon />,
                   label: "Location",
-                  value: "Lilongwe, Malawi",
+                  value: "Blantyre Malawi",
+                  href: null,
+                },
+                {
+                  icon: <PhoneIcon />,
+                  label: "Phone number",
+                  value: "+265 994 167 753",
                   href: null,
                 },
                 {
