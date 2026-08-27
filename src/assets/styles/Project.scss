@@ -370,6 +370,48 @@
   font-weight: 500;
 }
 
+.case-study-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1.2rem;
+  padding: 0;
+  border: 0;
+  color: var(--accent-orange);
+  background: transparent;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.case-study-toggle svg {
+  font-size: 1.05rem;
+  transition: transform 0.25s ease;
+}
+.case-study-toggle svg.is-open {
+  transform: rotate(180deg);
+}
+.case-study {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+.case-study span {
+  color: var(--text-primary);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.case-study p {
+  margin: 0.3rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
 @media (max-width: 760px) {
   .proj-section {
     padding: 6rem 1.2rem 7rem;
