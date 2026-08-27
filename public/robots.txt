@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://riley071.github.io/EmmanuelMatewere07/sitemap.xml
+Sitemap: https://emmanuel-matewere07.vercel.app/sitemap.xml
