@@ -4,6 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import "../assets/styles/Navigation.scss";
 
 const NAV_ITEMS = [
+  { label: "About", id: "about" },
   { label: "Expertise", id: "expertise" },
   { label: "Design Work", id: "design-work" },
   { label: "History", id: "history" },

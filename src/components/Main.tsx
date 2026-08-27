@@ -123,13 +123,17 @@ function Main() {
         </div>
 
         {/* ── Visual column ────────────────────── */}
-        <div className="hero-visual" aria-hidden="true">
+        <div className="hero-visual">
           <div className="avatar-ring">
-            <div className="avatar-core">EM</div>
+            <img
+              className="profile-image"
+              src={`${process.env.PUBLIC_URL}/emmanuel profile img.png`}
+              alt="Emmanuel Matewere, full-stack developer from Malawi"
+            />
           </div>
-          <div className="float-card fc-1">⚛️ React & Full Stack</div>
-          <div className="float-card fc-2">🏦 Digital Banking</div>
-          <div className="float-card fc-3">🗄️ PHP & MySQL</div>
+          <div className="float-card fc-1">React & Full Stack</div>
+          <div className="float-card fc-2">Digital Banking</div>
+          <div className="float-card fc-3">PHP & MySQL</div>
         </div>
       </div>
 
