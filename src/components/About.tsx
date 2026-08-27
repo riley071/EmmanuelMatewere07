@@ -12,6 +12,17 @@ function About() {
           </h2>
         </div>
         <div className="about-grid">
+          <div className="about-profile">
+            <img
+              src={`${process.env.PUBLIC_URL}/emmanuel profile img.png`}
+              alt="Emmanuel Matewere, full-stack developer from Malawi"
+              width="420"
+              height="420"
+              loading="lazy"
+              decoding="async"
+            />
+            <span>Developer · Designer · Systems thinker</span>
+          </div>
           <p>
             I’m Emmanuel Matewere, a Malawian full-stack developer and
             technology professional with a background in Computing Information

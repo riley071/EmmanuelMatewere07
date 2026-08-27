@@ -134,6 +134,22 @@ const SKILLS = [
       "Brand Consistency",
     ],
   },
+  {
+    icon: faCode,
+    color: "#55c776",
+    title: "CMS, UI/UX & Product Design",
+    desc: "I design and build clear digital experiences across WordPress and other CMS platforms, pairing frontend development with user research, wireframing, prototyping, and accessible interface design.",
+    tags: [
+      "WordPress",
+      "CMS Platforms",
+      "UI Design",
+      "UX Research",
+      "Figma",
+      "Wireframing",
+      "Prototyping",
+      "Accessibility",
+    ],
+  },
 ];
 
 function Expertise() {

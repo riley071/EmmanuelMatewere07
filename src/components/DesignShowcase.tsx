@@ -8,9 +8,15 @@ import poster2 from "../assets/images/poster2.jpg";
 import poster3 from "../assets/images/poster3.png";
 import poster4 from "../assets/images/poster4.png";
 import poster5 from "../assets/images/poster5.png";
+import poster1Preview from "../assets/images/optimized/poster1.jpg";
+import poster2Preview from "../assets/images/optimized/poster2.jpg";
+import poster3Preview from "../assets/images/optimized/poster3.jpg";
+import poster4Preview from "../assets/images/optimized/poster4.jpg";
+import poster5Preview from "../assets/images/optimized/poster5.jpg";
 
 type DesignItem = {
   image: string;
+  preview: string;
   title: string;
   category: string;
   description: string;
@@ -19,30 +25,35 @@ type DesignItem = {
 const DESIGNS: DesignItem[] = [
   {
     image: poster1,
+    preview: poster1Preview,
     title: "Digital product campaigns",
     category: "Web & campaign design",
     description: "Promotional visuals that bring digital products to life.",
   },
   {
     image: poster2,
+    preview: poster2Preview,
     title: "Farewell Our Dancing CEO",
     category: "Corporate campaign",
     description: "A bold, story-led campaign design for NBS Bank.",
   },
   {
     image: poster3,
+    preview: poster3Preview,
     title: "Morditech Solutions MW",
     category: "Brand launch",
     description: "A launch graphic designed to make a new website memorable.",
   },
   {
     image: poster4,
+    preview: poster4Preview,
     title: "Social Media Services",
     category: "Social media design",
     description: "Clear pricing communication for a social media offering.",
   },
   {
     image: poster5,
+    preview: poster5Preview,
     title: "ThreadMW",
     category: "Fashion campaign",
     description: "Editorial campaign art for a Malawi streetwear brand.",
@@ -77,7 +88,14 @@ function DesignShowcase() {
               onClick={() => setSelected(design)}
               aria-label={`View ${design.title}`}
             >
-              <img src={design.image} alt={design.title} />
+              <img
+                src={design.preview}
+                alt={design.title}
+                width="720"
+                height="520"
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
               <span className="design-piece-shade" />
               <span className="design-piece-info">
                 <small>{design.category}</small>
@@ -106,7 +124,7 @@ function DesignShowcase() {
           >
             <CloseIcon />
           </button>
-          <img src={selected.image} alt={selected.title} />
+          <img src={selected.image} alt={selected.title} decoding="async" />
           <div className="design-modal-caption">
             <span>{selected.category}</span>
             <strong>{selected.title}</strong>

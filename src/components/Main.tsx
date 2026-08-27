@@ -124,23 +124,28 @@ function Main() {
 
         {/* ── Visual column ────────────────────── */}
         <div className="hero-visual">
-          <div className="avatar-ring">
-            <img
-              className="profile-image"
-              src={`${process.env.PUBLIC_URL}/emmanuel profile img.png`}
-              alt="Emmanuel Matewere, full-stack developer from Malawi"
-            />
+          <div className="skill-orbit" aria-label="Core skills">
+            <div className="orbit-core">
+              <span>BUILD</span>
+              <strong>better</strong>
+            </div>
+            <span className="orbit-skill orbit-skill-1">React</span>
+            <span className="orbit-skill orbit-skill-2">WordPress</span>
+            <span className="orbit-skill orbit-skill-3">UI / UX</span>
+            <span className="orbit-skill orbit-skill-4">PHP</span>
+            <span className="orbit-skill orbit-skill-5">Figma</span>
+            <span className="orbit-skill orbit-skill-6">CMS</span>
           </div>
-          <div className="float-card fc-1">React & Full Stack</div>
-          <div className="float-card fc-2">Digital Banking</div>
-          <div className="float-card fc-3">PHP & MySQL</div>
+          <div className="float-card fc-1">Frontend systems</div>
+          <div className="float-card fc-2">CMS platforms</div>
+          <div className="float-card fc-3">Visual problem solving</div>
         </div>
       </div>
 
       {/* ── Stats bar ────────────────────────────── */}
       <div className="hero-stats">
         {[
-          { num: "2+", label: "Years Experience" },
+          { num: "5+", label: "Years Experience" },
           { num: "10+", label: "Projects Built" },
           { num: "8+", label: "Tech Skills" },
           { num: "100%", label: "Dedicated to Excellence" },
