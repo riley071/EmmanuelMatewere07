@@ -15,9 +15,9 @@ function About() {
           <p>
             I’m Emmanuel Matewere, a Malawian full-stack developer and
             technology professional with a background in Computing Information
-            Systems. I build digital products that connect technology,
-            business, and people, with experience in web development, digital
-            banking, and entrepreneurship.
+            Systems. I build digital products that connect technology, business,
+            and people, with experience in web development, digital banking, and
+            entrepreneurship.
           </p>
           <div className="about-goal">
             <span className="about-kicker">My goal</span>
