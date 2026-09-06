@@ -31,6 +31,21 @@ const SKILLS = [
     ],
   },
   {
+    icon: faCode,
+    color: "#ff8a4c",
+    title: "AI-Assisted Development",
+    desc: "I use AI tools such as Claude and OpenAI Codex to support research, brainstorming, code generation, debugging, documentation, and refactoring while applying independent technical judgment throughout the development process.",
+    tags: [
+      "Claude",
+      "OpenAI Codex",
+      "Prompting",
+      "Code Review",
+      "Debugging",
+      "Documentation",
+      "Testing",
+    ],
+  },
+  {
     icon: faDatabase,
     color: "#00d4aa",
     title: "Digital Banking & Systems",
