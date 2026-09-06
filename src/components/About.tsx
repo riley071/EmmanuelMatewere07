@@ -30,11 +30,11 @@ function About() {
             and people, with experience in web development, digital banking, and
             entrepreneurship.
           </p>
-          <p>
+          {/* <p>
             I use AI-assisted development tools such as Claude and OpenAI Codex
             for research, debugging, documentation, and improving development
             workflows, while reviewing and testing every output before using it.
-          </p>
+          </p> */}
           <div className="about-goal">
             <span className="about-kicker">My goal</span>
             <p>
