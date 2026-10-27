@@ -99,6 +99,39 @@ const PROJECTS: ProjectData[] = [
     },
   },
   {
+    category: "Business Website",
+    title: "SGM Technology Solutions",
+    shortTitle: "IT & AI consultancy",
+    mark: "SGM",
+    accent: "blue",
+    desc: "Smarter Technology. Stronger Businesses. A professional, modern website for SGM Tech Solutions LLC, showcasing IT infrastructure, managed IT, cybersecurity, and AI consulting and automation.",
+    highlights: [
+      "Prerendered pages for SEO and lazy-loaded navigation",
+      "Framer Motion animations and Three.js visuals",
+      "Resend-powered contact forms and Vercel Web Analytics",
+    ],
+    live: "https://www.sgmtechsolutions.com/",
+    repo: "https://www.sgmtechsolutions.com/",
+    tags: [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Three.js",
+      "Resend",
+      "Vercel",
+    ],
+    caseStudy: {
+      challenge:
+        "Launching the site was the easy part; getting it found on Google was the real challenge. SGM is a mostly US-focused business with a very common name, so the site competed with many unrelated results for the same three letters.",
+      approach:
+        "I revisited my SEO practices from scratch: prerendered pages, a proper XML sitemap, a robots.txt, and Google Search Console for submission and indexing checks. I also encouraged the client to set up a Google Business profile and social media accounts to strengthen the brand's presence beyond the website itself.",
+      role: "I designed and built the site with React 18, Vite 5, and Tailwind CSS, including a custom browser-history router, lazy-loaded pages, and Resend contact forms through a Vercel serverless function. I also owned the SEO and indexing setup.",
+      outcome:
+        "A live business website with a professional, modern presentation, a direct enquiry route, Vercel hosting and analytics, and the sgmtechsolutions.com domain managed through GoDaddy. The project taught me that visibility takes more than deployment: indexing, search presence, and off-site profiles all matter.",
+    },
+  },
+  {
     category: "E-commerce / Business Website",
     title: "Sekulu265",
     shortTitle: "Footwear commerce",

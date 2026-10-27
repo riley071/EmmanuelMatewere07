@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import "../assets/styles/Navigation.scss";
 
 const NAV_ITEMS = [
@@ -17,7 +19,8 @@ type NavigationProps = {
   modeChange: () => void;
 };
 
-function Navigation(_props: NavigationProps) {
+function Navigation({ parentToChild, modeChange }: NavigationProps) {
+  const isLight = parentToChild.mode === "light";
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActive] = useState("");
@@ -77,6 +80,16 @@ function Navigation(_props: NavigationProps) {
 
           {/* Actions */}
           <div className="nav-actions">
+            <button
+              type="button"
+              className="icon-btn"
+              onClick={modeChange}
+              aria-label={isLight ? "Switch to dark mode" : "Switch to light mode"}
+              title={isLight ? "Switch to dark mode" : "Switch to light mode"}
+              aria-pressed={isLight}
+            >
+              {isLight ? <DarkModeIcon /> : <LightModeIcon />}
+            </button>
             <button
               className="icon-btn mobile-trigger"
               onClick={() => setMobileOpen((v) => !v)}

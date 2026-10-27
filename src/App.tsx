@@ -16,6 +16,11 @@ import "./index.scss";
 function App() {
   const [mode, setMode] = useState<string>("dark");
 
+  useEffect(() => {
+    document.documentElement.dataset.theme = mode;
+    return () => { delete document.documentElement.dataset.theme; };
+  }, [mode]);
+
   const handleModeChange = () => {
     if (mode === "dark") {
       setMode("light");
