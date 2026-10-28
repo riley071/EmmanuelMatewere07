@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReact, faPython } from "@fortawesome/free-brands-svg-icons";
 import {
@@ -168,6 +168,40 @@ const SKILLS = [
 ];
 
 function Expertise() {
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid || !("IntersectionObserver" in window)) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>(".exp-card"));
+    const observer = new IntersectionObserver((entries) => {
+      const columns = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const card = entry.target as HTMLElement;
+        if (!motion.matches) {
+          card.style.setProperty("--enter-delay", `${(cards.indexOf(card) % columns) * 90}ms`);
+          card.classList.add("is-entering");
+        }
+        observer.unobserve(card);
+      });
+    }, { threshold: 0.05 });
+    const syncMotion = () => {
+      observer.disconnect();
+      cards.forEach((card) => {
+        card.classList.remove("is-entering");
+        if (!motion.matches) observer.observe(card);
+      });
+    };
+    syncMotion();
+    motion.addEventListener("change", syncMotion);
+    return () => {
+      observer.disconnect();
+      motion.removeEventListener("change", syncMotion);
+    };
+  }, []);
+
   return (
     <section className="expertise-section" id="expertise">
       <div className="expertise-wrap">
@@ -182,11 +216,16 @@ function Expertise() {
           </p>
         </div>
 
-        <div className="expertise-grid">
+        <div className="expertise-grid" ref={gridRef}>
           {SKILLS.map((skill, i) => (
             <div
               key={i}
               className="exp-card"
+              onAnimationEnd={(event) => {
+                if (event.target === event.currentTarget) {
+                  event.currentTarget.classList.remove("is-entering");
+                }
+              }}
               style={{ "--c": skill.color } as React.CSSProperties}
             >
               {/* Top accent line animates in on hover */}

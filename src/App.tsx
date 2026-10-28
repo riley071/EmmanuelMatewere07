@@ -11,6 +11,7 @@ import {
   Footer,
 } from "./components";
 import FadeIn from "./components/FadeIn";
+import ScrollToTop from "./components/ScrollToTop";
 import "./index.scss";
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
         </main>
       </FadeIn>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
