@@ -105,7 +105,7 @@ const PROJECTS: ProjectData[] = [
     shortTitle: "IT & AI consultancy",
     mark: "SGM",
     accent: "blue",
-    desc: "Smarter Technology. Stronger Businesses. A professional, modern website for SGM Tech Solutions LLC, showcasing IT infrastructure, managed IT, cybersecurity, and AI consulting and automation.",
+    desc: "A freelance client website for SGM Tech Solutions, founded and owned by Simeon Chisi. Emmanuel Matewere designed and developed the website to showcase the client's IT services and provide a direct enquiry route.",
     highlights: [
       "Prerendered pages for SEO and lazy-loaded navigation",
       "Framer Motion animations and Three.js visuals",
@@ -124,12 +124,12 @@ const PROJECTS: ProjectData[] = [
     ],
     caseStudy: {
       challenge:
-        "Launching the site was the easy part; getting it found on Google was the real challenge. SGM is a mostly US-focused business with a very common name, so the site competed with many unrelated results for the same three letters.",
+        "SGM Tech Solutions, founded and owned by Simeon Chisi, needed a professional website to present its services and help potential customers contact the business. The project also required clear branding to distinguish SGM from similarly named companies in search results.",
       approach:
-        "I revisited my SEO practices from scratch: prerendered pages, a proper XML sitemap, a robots.txt, and Google Search Console for submission and indexing checks. I also encouraged the client to set up a Google Business profile and social media accounts to strengthen the brand's presence beyond the website itself.",
-      role: "I designed and built the site with React 18, Vite 5, and Tailwind CSS, including a custom browser-history router, lazy-loaded pages, and Resend contact forms through a Vercel serverless function. I also owned the SEO and indexing setup.",
+        "I designed and developed the client's website with clear service pages, contact forms, and responsive layouts. I implemented prerendered pages, an XML sitemap, robots.txt, and Google Search Console submission and indexing checks to support discoverability.",
+      role: "I worked as the freelance website designer and developer for this client project. I built the site with React 18, Vite 5, and Tailwind CSS, including lazy-loaded pages and Resend contact forms through a Vercel serverless function, and handled the website's technical SEO setup. Simeon Chisi is the founder and owner of SGM Tech Solutions; my involvement was limited to website design, development, and technical setup.",
       outcome:
-        "A live business website with a professional, modern presentation, a direct enquiry route, Vercel hosting and analytics, and the sgmtechsolutions.com domain managed through GoDaddy. The project taught me that visibility takes more than deployment: indexing, search presence, and off-site profiles all matter.",
+        "Delivered a live client website at sgmtechsolutions.com with a professional presentation, direct enquiry forms, and Vercel hosting and analytics. This portfolio entry documents my freelance website work for Simeon Chisi's business.",
     },
   },
   {
