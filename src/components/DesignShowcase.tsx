@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from "framer-motion";
 import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
@@ -61,6 +62,7 @@ const DESIGNS: DesignItem[] = [
 ];
 
 function DesignShowcase() {
+  const reduced = useReducedMotion();
   const [selected, setSelected] = useState<DesignItem | null>(null);
 
   return (
@@ -81,7 +83,12 @@ function DesignShowcase() {
 
         <div className="design-grid">
           {DESIGNS.map((design, index) => (
-            <button
+            <motion.button
+              initial={reduced ? false : { opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .1 }}
+              transition={{ duration: .5, delay: (index % 3) * .08 }}
+              whileHover={reduced ? {} : { y: -6, scale: 1.015, rotateX: 2, rotateY: -2 }}
+              style={{ transformPerspective: 1000 }}
               className={`design-piece ${index === 0 ? "design-piece-featured" : ""}`}
               key={design.title}
               type="button"
@@ -104,7 +111,7 @@ function DesignShowcase() {
                   <ZoomInIcon sx={{ fontSize: 17 }} /> View design
                 </span>
               </span>
-            </button>
+            </motion.button>
           ))}
         </div>
       </div>

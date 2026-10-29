@@ -1,18 +1,22 @@
+import { motion, useReducedMotion } from "framer-motion";
+import AnimatedCard from "./AnimatedCard";
 import React from "react";
 import "../assets/styles/About.scss";
 
 function About() {
+  const reduced = useReducedMotion();
   return (
     <section className="about-section" id="about">
-      <div className="about-wrap">
+      <AnimatedCard tilt={false} className="about-wrap">
         <div className="section-header">
           <span className="section-label">About Me</span>
           <h2 className="section-title">
             Technology with <span className="highlight">purpose.</span>
           </h2>
+          <motion.span className="about-accent" initial={reduced ? false : { scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: .8 }} />
         </div>
         <div className="about-grid">
-          <div className="about-profile">
+          <AnimatedCard className="about-profile">
             <img
               src={`${process.env.PUBLIC_URL}/emmanuel profile img.png`}
               alt="Emmanuel Matewere, full-stack developer from Malawi"
@@ -22,7 +26,7 @@ function About() {
               decoding="async"
             />
             <span>Developer · Designer · Systems thinker</span>
-          </div>
+          </AnimatedCard>
           <p>
             I’m Emmanuel Matewere, a Malawian full-stack developer and
             technology professional with a background in Computing Information
@@ -50,7 +54,7 @@ function About() {
             </p>
           </div>
         </div>
-      </div>
+      </AnimatedCard>
     </section>
   );
 }

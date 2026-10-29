@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PhoneIcon from "@mui/icons-material/Phone";
 import DownloadIcon from "@mui/icons-material/Download";
 import "../assets/styles/Main.scss";
+
+import { motion, useReducedMotion } from "framer-motion";
+import CountUp from "./CountUp";
+import SkillOrbit from "./SkillOrbit";
+const HeroScene = lazy(() => import("./HeroScene"));
 
 const ROLES = [
   "Full Stack Developer",
@@ -14,12 +19,14 @@ const ROLES = [
 ];
 
 function Main() {
+  const reduced = useReducedMotion();
   const [roleIdx, setRoleIdx] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [typing, setTyping] = useState(true);
 
   /* Typewriter effect */
   useEffect(() => {
+    if (reduced) { setDisplayed(ROLES[0]); return; }
     const current = ROLES[roleIdx];
     let timer: ReturnType<typeof setTimeout>;
 
@@ -42,13 +49,14 @@ function Main() {
     }
 
     return () => clearTimeout(timer);
-  }, [displayed, typing, roleIdx]);
+  }, [displayed, typing, roleIdx, reduced]);
 
   const scrollTo = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById(id)?.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
 
   return (
     <section className="hero" id="main">
+      <Suspense fallback={null}><HeroScene /></Suspense>
       {/* Ambient blobs */}
       <div className="blob blob-orange" />
       <div className="blob blob-purple" />
@@ -56,31 +64,31 @@ function Main() {
 
       <div className="hero-inner">
         {/* ── Text column ──────────────────────── */}
-        <div className="hero-text">
-          <span className="availability">
+        <motion.div className="hero-text" initial={reduced ? false : "hidden"} animate="visible" variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.09 } } }}>
+          <motion.span variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }} className="availability">
             <i /> Available for freelance work
-          </span>
-          <span className="hero-greeting">Hello, I'm</span>
+          </motion.span>
+          <motion.span variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }} className="hero-greeting">Hello, I'm</motion.span>
 
-          <h1 className="hero-name">
+          <motion.h1 variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }} className="hero-name">
             Emmanuel
             <br />
             <span className="highlight">Matewere</span>
-          </h1>
+          </motion.h1>
 
-          <p className="hero-role">
+          <motion.p variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }} className="hero-role">
             <span className="role-typed">{displayed}</span>
             <span className="role-cursor">|</span>
-          </p>
+          </motion.p>
 
-          <p className="hero-bio">
+          <motion.p variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }} className="hero-bio">
             Computing Information Systems graduate with expertise in building
             robust web applications, managing digital banking systems, and
             designing intuitive user experiences. Based in Blantyre, Malawi 🇲🇼 —
             working with clients worldwide.
-          </p>
+          </motion.p>
 
-          <div className="hero-cta">
+          <motion.div variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }} className="hero-cta">
             <button
               className="btn-primary"
               onClick={() => scrollTo("projects")}
@@ -97,9 +105,9 @@ function Main() {
             >
               <DownloadIcon sx={{ fontSize: 17 }} /> Download CV
             </a>
-          </div>
+          </motion.div>
 
-          <div className="hero-socials">
+          <motion.div variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }} className="hero-socials">
             <a
               href="https://github.com/riley071"
               target="_blank"
@@ -119,26 +127,12 @@ function Main() {
             <a href="tel:+265882944267" className="social-pill">
               <PhoneIcon sx={{ fontSize: 16 }} /> Call Me
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* ── Visual column ────────────────────── */}
-        <div className="hero-visual">
-          <div className="skill-orbit" aria-label="Core skills">
-            <div className="orbit-core">
-              <span>BUILD</span>
-              <strong>better</strong>
-            </div>
-            <span className="orbit-skill orbit-skill-1">React</span>
-            <span className="orbit-skill orbit-skill-2">WordPress</span>
-            <span className="orbit-skill orbit-skill-3">UI / UX</span>
-            <span className="orbit-skill orbit-skill-4">PHP</span>
-            <span className="orbit-skill orbit-skill-5">Figma</span>
-            <span className="orbit-skill orbit-skill-6">CMS</span>
-          </div>
-          <div className="float-card fc-1">Frontend systems</div>
-          <div className="float-card fc-2">CMS platforms</div>
-          <div className="float-card fc-3">Visual problem solving</div>
+        <div className="hero-visual hero-visual-hybrid">
+          <SkillOrbit />
         </div>
       </div>
 
@@ -153,7 +147,7 @@ function Main() {
           <React.Fragment key={label}>
             {i > 0 && <div className="stat-sep" />}
             <div className="stat">
-              <span className="stat-num">{num}</span>
+              <span className="stat-num"><CountUp value={num} /></span>
               <span className="stat-label">{label}</span>
             </div>
           </React.Fragment>

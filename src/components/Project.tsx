@@ -1,3 +1,4 @@
+import AnimatedCard from "./AnimatedCard";
 import React, { useState } from "react";
 import LaunchIcon from "@mui/icons-material/Launch";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -180,7 +181,7 @@ function Project() {
             const isCaseStudyOpen = openCaseStudy === p.title;
 
             return (
-              <article key={p.title} className={`proj-card accent-${p.accent}`}>
+              <AnimatedCard role="article" delay={(PROJECTS.indexOf(p) % 2) * .1} key={p.title} className={`proj-card accent-${p.accent}`}>
                 <div className="proj-thumb">
                   <div className="browser-bar">
                     <span />
@@ -302,7 +303,7 @@ function Project() {
                     </span>
                   )}
                 </div>
-              </article>
+              </AnimatedCard>
             );
           })}
         </div>

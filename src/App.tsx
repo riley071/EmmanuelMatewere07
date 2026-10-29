@@ -10,7 +10,8 @@ import {
   Navigation,
   Footer,
 } from "./components";
-import FadeIn from "./components/FadeIn";
+import { MotionConfig } from "framer-motion";
+import "./assets/styles/Motion.scss";
 import ScrollToTop from "./components/ScrollToTop";
 import "./index.scss";
 
@@ -39,7 +40,7 @@ function App() {
       className={`main-container ${mode === "dark" ? "dark-mode" : "light-mode"}`}
     >
       <Navigation parentToChild={{ mode }} modeChange={handleModeChange} />
-      <FadeIn transitionDuration={700}>
+      <MotionConfig reducedMotion="user">
         <main>
           <Main />
           <About />
@@ -49,7 +50,7 @@ function App() {
           <Project />
           <Contact />
         </main>
-      </FadeIn>
+      </MotionConfig>
       <Footer />
       <ScrollToTop />
     </div>

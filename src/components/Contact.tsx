@@ -1,3 +1,4 @@
+import AnimatedCard from "./AnimatedCard";
 import React, { useState } from "react";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -13,6 +14,9 @@ function Contact() {
     email: false,
     message: false,
   });
+  const [loading, setLoading] = useState(false);
+  const timer = React.useRef<ReturnType<typeof setTimeout>>();
+  React.useEffect(() => () => clearTimeout(timer.current), []);
   const [sent, setSent] = useState(false);
 
   const update =
@@ -20,7 +24,7 @@ function Contact() {
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setForm((prev) => ({ ...prev, [key]: e.target.value }));
 
-  const handleSend = (e: React.MouseEvent) => {
+  const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
     const errs = {
       name: form.name.trim() === "",
@@ -30,17 +34,16 @@ function Contact() {
     setErrors(errs);
 
     if (!errs.name && !errs.email && !errs.message) {
-      // 👇 Plug in your emailjs call here
-      // emailjs.send('service_id', 'template_id', form, 'api_key');
-      setSent(true);
-      setForm({ name: "", email: "", message: "" });
-      setTimeout(() => setSent(false), 6000);
+      setLoading(true);
+      // No delivery service is configured: hand off to the visitor's email app.
+      window.location.href = `mailto:emzomatewere@gmail.com?subject=${encodeURIComponent(`Portfolio enquiry from ${form.name}`)}&body=${encodeURIComponent(`${form.message}\n\nReply to: ${form.email}`)}`;
+      timer.current = setTimeout(() => { setLoading(false); setSent(true); }, 650);
     }
   };
 
   return (
     <section className="contact-section" id="contact">
-      <div className="contact-wrap">
+      <AnimatedCard tilt={false} className="contact-wrap">
         <div className="section-header" style={{ textAlign: "center" }}>
           <span className="section-label">Get In Touch</span>
           <h2 className="section-title">
@@ -115,20 +118,22 @@ function Contact() {
           </aside>
 
           {/* ── Form ── */}
-          <div className="contact-form">
+          <form className="contact-form" onSubmit={handleSend}>
             {sent && (
-              <div className="success-toast">
-                ✓ Message sent — I'll get back to you soon!
+              <div className="success-toast" role="status">
+                Email draft requested. Please send it from your email app.
               </div>
             )}
 
             {(["name", "email"] as const).map((field) => (
               <div className="field" key={field}>
-                <label className="field-label">
+                <label className="field-label" htmlFor={`contact-${field}`}>
                   {field === "name" ? "Your Name" : "Email / Phone"} *
                 </label>
                 <input
+                  id={`contact-${field}`}
                   type="text"
+                  autoComplete={field === "name" ? "name" : "email"}
                   className={`field-input ${errors[field] ? "has-error" : ""}`}
                   placeholder={
                     field === "name"
@@ -148,8 +153,9 @@ function Contact() {
             ))}
 
             <div className="field">
-              <label className="field-label">Message *</label>
+              <label className="field-label" htmlFor="contact-message">Message *</label>
               <textarea
+                id="contact-message"
                 className={`field-input field-textarea ${errors.message ? "has-error" : ""}`}
                 placeholder="Tell me about your project or idea..."
                 rows={6}
@@ -161,12 +167,12 @@ function Contact() {
               )}
             </div>
 
-            <button className="send-btn" onClick={handleSend}>
-              Send Message <SendIcon sx={{ fontSize: 18 }} />
+            <button className="send-btn" type="submit" disabled={loading} aria-busy={loading}>
+              {loading ? "Opening email..." : sent ? "Open another draft" : "Send Message"} <SendIcon sx={{ fontSize: 18 }} />
             </button>
-          </div>
+          </form>
         </div>
-      </div>
+      </AnimatedCard>
     </section>
   );
 }

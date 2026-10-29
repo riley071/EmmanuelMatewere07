@@ -1,0 +1,31 @@
+/* Decorative canvas stays behind all interactive hero content. */
+.hero { isolation: isolate; }
+.hero-scene { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.hero-scene canvas { pointer-events: none !important; }
+.hero-inner, .hero-stats, .scroll-hint { position: relative; z-index: 1; }
+.stat { transition: box-shadow .3s, transform .3s; border-radius: 14px; }
+.stat:hover { transform: scale(1.04); box-shadow: 0 0 32px var(--orange-glow); }
+.exp-card, .proj-card { transition: box-shadow .3s, border-color .3s; }
+.exp-card:hover, .proj-card:hover { box-shadow: 0 20px 55px rgba(0,0,0,.25), 0 0 26px var(--orange-glow); }
+.exp-card:hover .card-icon { transform: scale(1.08); }
+.card-icon { transition: transform .3s; }
+.proj-thumb { transition: transform .45s; transform-origin: center; }
+.proj-card:hover .proj-thumb { transform: perspective(1200px) rotateX(2deg) translateY(-3px); }
+.preview-status { animation: badge-glow 3s ease-in-out infinite; }
+@keyframes badge-glow { 50% { box-shadow: 0 0 14px rgba(0,212,170,.25); } }
+.about-accent { display: block; margin-top: 20px; height: 2px; width: 64px; background: var(--accent-orange); transform-origin: left; }
+.design-piece:hover { box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+.timeline-progress { position: absolute; left: 23px; top: 0; bottom: 0; width: 2px; background: linear-gradient(var(--accent-orange), var(--accent-purple), var(--accent-teal)); transform-origin: top; }
+.tl-item:hover .tl-icon { box-shadow: 0 0 26px rgba(139,92,246,.6); }
+.tl-item .tl-icon { animation: badge-glow 4s ease-in-out infinite; }
+.field-input { transition: border-color .25s, box-shadow .25s, background .25s; }
+.field-input:focus { outline: none; border-color: var(--accent-orange); box-shadow: 0 0 0 3px var(--orange-glow); }
+.send-btn { transition: transform .2s, box-shadow .2s; }
+.send-btn:active { transform: scale(.97); }
+.send-btn:disabled { cursor: wait; opacity: .75; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) { .proj-card:hover .proj-thumb, .stat:hover { transform: none; } }

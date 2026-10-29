@@ -1,3 +1,5 @@
+import { motion, useScroll, useReducedMotion } from "framer-motion";
+import AnimatedCard from "./AnimatedCard";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -71,6 +73,12 @@ const CERTIFICATIONS = [
   },
 ];
 
+function TimelineTrack({ children }: React.PropsWithChildren<{}>) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 85%", "end 65%"] });
+  return <div className="tl-list" ref={ref}><motion.span className="timeline-progress" style={{ scaleY: reduced ? 1 : scrollYProgress }} />{children}</div>;
+}
 function Timeline() {
   return (
     <section className="tl-section" id="history">
@@ -82,9 +90,9 @@ function Timeline() {
               Career <span className="highlight">Journey</span>
             </h2>
           </div>
-          <div className="tl-list">
+          <TimelineTrack>
             {CAREER.map((item, i) => (
-              <div className="tl-item" key={i}>
+              <AnimatedCard direction="left" tilt={false} className="tl-item" key={i}>
                 <div className="tl-icon work">
                   <FontAwesomeIcon icon={faBriefcase} />
                 </div>
@@ -101,9 +109,9 @@ function Timeline() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </AnimatedCard>
             ))}
-          </div>
+          </TimelineTrack>
         </div>
 
         <div className="tl-block">
@@ -113,9 +121,9 @@ function Timeline() {
               Education <span className="highlight">Path</span>
             </h2>
           </div>
-          <div className="tl-list">
+          <TimelineTrack>
             {EDUCATION.map((item, i) => (
-              <div className="tl-item" key={i}>
+              <AnimatedCard direction="left" tilt={false} className="tl-item" key={i}>
                 <div className="tl-icon edu">
                   <FontAwesomeIcon icon={faGraduationCap} />
                 </div>
@@ -124,16 +132,16 @@ function Timeline() {
                   <h3 className="tl-role">{item.degree}</h3>
                   <h4 className="tl-company">{item.institution}</h4>
                 </div>
-              </div>
+              </AnimatedCard>
             ))}
-          </div>
+          </TimelineTrack>
 
           <div className="section-header" style={{ marginTop: "3rem" }}>
             <span className="section-label">Certifications</span>
           </div>
-          <div className="tl-list">
+          <TimelineTrack>
             {CERTIFICATIONS.map((item, i) => (
-              <div className="tl-item" key={i}>
+              <AnimatedCard direction="left" tilt={false} className="tl-item" key={i}>
                 <div className="tl-icon edu">
                   <FontAwesomeIcon icon={faGraduationCap} />
                 </div>
@@ -142,9 +150,9 @@ function Timeline() {
                   <h3 className="tl-role">{item.title}</h3>
                   <h4 className="tl-company">{item.issuer}</h4>
                 </div>
-              </div>
+              </AnimatedCard>
             ))}
-          </div>
+          </TimelineTrack>
         </div>
       </div>
     </section>
