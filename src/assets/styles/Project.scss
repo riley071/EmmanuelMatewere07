@@ -63,6 +63,33 @@
   transition: transform 0.7s ease;
 }
 
+.proj-illustration {
+  height: 100%;
+}
+
+.proj-screenshot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+// Keep the illustration mounted for its GSAP lifecycle and image-error fallback.
+.has-screenshot .proj-illustration {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.has-screenshot .preview-caption {
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  color: #fff;
+  background: rgba(14, 14, 26, 0.88);
+}
+
 .proj-card:hover .proj-thumb::after {
   transform: translateX(120%);
 }

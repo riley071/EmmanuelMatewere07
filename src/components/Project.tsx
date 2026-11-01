@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 type ProjectData = {
   category: string;
   title: string;
+  image?: string;
   shortTitle: string;
   mark: string;
   accent: string;
@@ -56,6 +57,7 @@ const PROJECTS: ProjectData[] = [
   {
     category: "E-commerce Platform",
     title: "ThreadMW",
+    image: "/images/projects/threadmw.png",
     shortTitle: "Fashion storefront",
     mark: "T",
     accent: "coral",
@@ -81,6 +83,7 @@ const PROJECTS: ProjectData[] = [
   {
     category: "Digital Marketplace",
     title: "NsimaBeats",
+    image: "/images/projects/nsimabeats.png",
     shortTitle: "Music marketplace",
     mark: "N",
     accent: "teal",
@@ -106,6 +109,7 @@ const PROJECTS: ProjectData[] = [
   {
     category: "Business Website",
     title: "SGM Technology Solutions",
+    image: "/images/projects/sgm.png",
     shortTitle: "IT & AI consultancy",
     mark: "SGM",
     accent: "blue",
@@ -139,6 +143,7 @@ const PROJECTS: ProjectData[] = [
   {
     category: "E-commerce / Business Website",
     title: "Sekulu265",
+    image: "/images/projects/sekulu265.png",
     shortTitle: "Footwear commerce",
     mark: "S",
     accent: "lime",
@@ -165,6 +170,7 @@ const PROJECTS: ProjectData[] = [
 
 function Project() {
   const [openCaseStudy, setOpenCaseStudy] = useState<string | null>(null);
+  const [failedImages, setFailedImages] = useState<string[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
@@ -219,10 +225,23 @@ function Project() {
         <div className="proj-grid">
           {PROJECTS.map((p) => {
             const isCaseStudyOpen = openCaseStudy === p.title;
+            const showScreenshot = !!p.image && !failedImages.includes(p.title);
 
             return (
               <AnimatedCard role="article" delay={(PROJECTS.indexOf(p) % 2) * .1} key={p.title} className={`proj-card accent-${p.accent}`}>
-                <div className="proj-thumb">
+                <div className={`proj-thumb${showScreenshot ? " has-screenshot" : ""}`}>
+                  {showScreenshot && (
+                    <img
+                      className="proj-screenshot"
+                      src={`${process.env.PUBLIC_URL}${p.image}`}
+                      alt={`${p.title} homepage`}
+                      loading="lazy"
+                      width={1280}
+                      height={640}
+                      onError={() => setFailedImages((failed) => [...failed, p.title])}
+                    />
+                  )}
+                  <div className="proj-illustration" aria-hidden={showScreenshot ? true : undefined}>
                   <div className="browser-bar">
                     <span />
                     <span />
@@ -261,9 +280,10 @@ function Project() {
                       </div>
                     </div>
                   </div>
+                  </div>
                   <div className="preview-caption">
                     <span>{p.category}</span>
-                    <span className="preview-status">Live project</span>
+                    <span className="preview-status">{p.live ? "Live project" : "Internal system"}</span>
                   </div>
                 </div>
 
