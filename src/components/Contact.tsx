@@ -45,12 +45,12 @@ function Contact() {
     <section className="contact-section" id="contact">
       <AnimatedCard tilt={false} className="contact-wrap">
         <div className="section-header" style={{ textAlign: "center" }}>
-          <span className="section-label">Get In Touch</span>
+          <span className="section-label">Hire me</span>
           <h2 className="section-title">
             Let's <span className="highlight">Work Together</span>
           </h2>
           <p className="section-subtitle">
-            Have a project in mind? I'd love to hear about it.
+            Tell me what you're building, your timeline, and how I can help.
           </p>
         </div>
 

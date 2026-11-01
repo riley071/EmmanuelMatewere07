@@ -1,4 +1,5 @@
 import AnimatedCard from "./AnimatedCard";
+import TechStack from "./TechStack";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReact, faPython } from "@fortawesome/free-brands-svg-icons";
@@ -19,17 +20,7 @@ const SKILLS = [
     color: "#61dafb",
     title: "Full Stack Development",
     desc: "Experienced in developing and deploying web applications using React.js, PHP, JavaScript, and MySQL. Strong expertise in designing responsive interfaces, building server-side logic, and optimizing performance across all platforms.",
-    tags: [
-      "React",
-      "JavaScript",
-      "PHP",
-      "HTML5",
-      "CSS3",
-      "Tailwind CSS",
-      "MySQL",
-      "API Integration",
-      "Git",
-    ],
+    tags: ["Responsive Interfaces", "API Integration", "Performance Optimization"],
   },
   {
     icon: faCode,
@@ -183,6 +174,8 @@ function Expertise() {
             build useful products and stronger brands.
           </p>
         </div>
+
+        <TechStack />
 
         <div className="expertise-grid">
           {SKILLS.map((skill, i) => (

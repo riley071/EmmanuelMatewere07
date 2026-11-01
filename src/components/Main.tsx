@@ -91,12 +91,12 @@ function Main() {
           <motion.div variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }} className="hero-cta">
             <button
               className="btn-primary"
-              onClick={() => scrollTo("projects")}
+              onClick={() => scrollTo("contact")}
             >
-              View My Work <span className="btn-arrow">→</span>
+              Hire me <span className="btn-arrow">→</span>
             </button>
-            <button className="btn-ghost" onClick={() => scrollTo("contact")}>
-              Get In Touch
+            <button className="btn-ghost" onClick={() => scrollTo("projects")}>
+              View my work
             </button>
             <a
               className="btn-cv"

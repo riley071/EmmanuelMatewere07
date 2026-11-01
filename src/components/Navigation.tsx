@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   { label: "Design Work", id: "design-work" },
   { label: "History", id: "history" },
   { label: "Projects", id: "projects" },
-  { label: "Contact", id: "contact" },
+  { label: "Hire me", id: "contact" },
 ];
 
 type NavigationProps = {
@@ -65,7 +65,7 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
 
           {/* Desktop links */}
           <ul className="nav-links">
-            {NAV_ITEMS.map(({ label, id }) => (
+            {NAV_ITEMS.filter(({ id }) => id !== "contact").map(({ label, id }) => (
               <li key={id}>
                 <button
                   className={`nav-link ${activeSection === id ? "active" : ""}`}
@@ -97,6 +97,13 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
             >
               {mobileOpen ? <CloseIcon /> : <MenuIcon />}
             </button>
+            <button
+              type="button"
+              className="nav-link nav-hire"
+              onClick={() => scrollTo("contact")}
+            >
+              Hire me
+            </button>
           </div>
         </div>
       </nav>
@@ -116,7 +123,7 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
           {NAV_ITEMS.map(({ label, id }, i) => (
             <button
               key={id}
-              className={`drawer-link ${activeSection === id ? "active" : ""}`}
+              className={`drawer-link ${id === "contact" ? "nav-hire" : ""} ${activeSection === id ? "active" : ""}`}
               style={{ transitionDelay: mobileOpen ? `${i * 55}ms` : "0ms" }}
               onClick={() => scrollTo(id)}
             >

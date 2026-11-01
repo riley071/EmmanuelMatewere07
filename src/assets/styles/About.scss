@@ -1,11 +1,51 @@
 .about-section {
+  position: relative;
   padding: 8rem 2rem;
+  overflow: hidden;
+  isolation: isolate;
   background: linear-gradient(180deg, transparent, rgba(0, 212, 170, 0.035));
+
+  /* ambient drifting orbs */
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+    pointer-events: none;
+    animation: about-drift 20s ease-in-out infinite alternate;
+  }
+  &::before {
+    top: 4%;
+    left: -150px;
+    background: var(--accent-teal);
+  }
+  &::after {
+    right: -150px;
+    bottom: 4%;
+    background: var(--accent-orange);
+    animation-delay: -10s;
+  }
 }
 
 .about-wrap {
   max-width: 1180px;
   margin: 0 auto;
+}
+
+/* The underline under the heading (framer-motion animates scaleX) */
+.about-accent {
+  display: block;
+  width: 84px;
+  height: 3px;
+  margin-top: 1.1rem;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent-orange), var(--accent-teal));
+  transform-origin: left center;
 }
 
 .about-grid {
@@ -15,32 +55,81 @@
   margin-top: 2.5rem;
 }
 
+@property --about-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* -- Profile --------------------------------------------------- */
 .about-profile {
+  position: relative;
   align-self: start;
-}
-
-.about-profile img {
-  display: block;
   width: min(100%, 260px);
-  aspect-ratio: 1;
-  object-fit: cover;
-  border: 2px solid var(--accent-orange);
-  border-radius: 24px;
-  box-shadow: 14px 14px 0 rgba(0, 212, 170, 0.16);
+
+  /* rotating gradient ring peeking out behind the photo */
+  &::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: -7px;
+    z-index: 0;
+    width: calc(100% + 14px);
+    aspect-ratio: 1;
+    border-radius: 31px;
+    background: conic-gradient(
+      from var(--about-angle),
+      var(--accent-orange),
+      transparent 30%,
+      var(--accent-teal) 55%,
+      transparent 80%,
+      var(--accent-orange)
+    );
+    opacity: 0.85;
+    animation: about-spin 7s linear infinite;
+    pointer-events: none;
+  }
+
+  img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    background: var(--bg-card);
+    border: 2px solid var(--accent-orange);
+    border-radius: 24px;
+    box-shadow: 14px 14px 0 rgba(0, 212, 170, 0.16);
+    animation: about-float 6s ease-in-out infinite;
+    transition:
+      box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.45s ease;
+  }
+
+  &:hover img {
+    box-shadow:
+      18px 18px 0 rgba(0, 212, 170, 0.28),
+      0 24px 50px rgba(0, 0, 0, 0.35);
+    filter: saturate(1.1) contrast(1.03);
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+    display: block;
+    max-width: 240px;
+    margin-top: 1.4rem;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
 }
 
-.about-profile span {
-  display: block;
-  max-width: 240px;
-  margin-top: 1rem;
-  color: var(--text-muted);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1.5;
-  text-transform: uppercase;
-}
-
+/* -- Intro paragraph ------------------------------------------- */
 .about-grid > p,
 .about-goal p {
   color: var(--text-secondary);
@@ -49,47 +138,116 @@
 }
 
 .about-grid > p {
+  position: relative;
   margin: 0;
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 2.2vw, 1.7rem);
   font-weight: 600;
   line-height: 1.45;
+
+  /* big decorative quote mark */
+  &::before {
+    content: "\201C";
+    position: absolute;
+    top: -2.4rem;
+    left: -0.4rem;
+    background: linear-gradient(135deg, var(--accent-orange), var(--accent-teal));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 5rem;
+    line-height: 1;
+    opacity: 0.55;
+    pointer-events: none;
+  }
 }
 
+/* -- Goal block ------------------------------------------------ */
 .about-goal {
+  position: relative;
   padding-left: 2rem;
-  border-left: 2px solid var(--accent-orange);
-}
 
-.about-goal p {
-  margin: 0 0 1rem;
+  /* flowing gradient line replaces the flat border */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(
+      180deg,
+      var(--accent-orange),
+      var(--accent-teal),
+      var(--accent-orange)
+    );
+    background-size: 100% 300%;
+    animation: about-flow 6s linear infinite;
+  }
+
+  p {
+    margin: 0 0 1rem;
+  }
 }
 
 .about-kicker {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   margin-bottom: 0.8rem;
   color: var(--accent-teal);
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+
+  &::after {
+    content: "";
+    width: 38px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-teal), transparent);
+  }
 }
 
+/* -- Keyframes ------------------------------------------------- */
+@keyframes about-spin {
+  to { --about-angle: 360deg; }
+}
+@keyframes about-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -6px; }
+}
+@keyframes about-flow {
+  to { background-position: 0 300%; }
+}
+@keyframes about-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(50px, -40px) scale(1.2); }
+}
+
+/* -- Responsive ------------------------------------------------ */
 @media (max-width: 700px) {
-  .about-section {
-    padding: 6rem 1.2rem;
-  }
+  .about-section { padding: 6rem 1.2rem; }
 
   .about-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
-  .about-profile img {
-    width: 190px;
-  }
+  .about-profile { width: 190px; }
+  .about-grid > p::before { top: -2rem; font-size: 4rem; }
+  .about-goal { padding-left: 1.2rem; }
+}
 
-  .about-goal {
-    padding-left: 1.2rem;
+/* -- Reduced motion -------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .about-section::before,
+  .about-section::after,
+  .about-profile::before,
+  .about-profile img,
+  .about-goal::before {
+    animation: none;
   }
+  .about-profile img { transition: none; }
 }

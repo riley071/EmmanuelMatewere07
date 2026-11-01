@@ -1,0 +1,22 @@
+/* Cursor-following glow. --mx / --my are set by AnimatedCard on pointer move.
+   The color comes from the card's own accent (--c for expertise, --pc for projects). */
+.ac-spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    340px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--c, var(--pc, var(--accent-orange))) 20%, transparent),
+    transparent 70%
+  );
+  transition: opacity 0.35s ease;
+}
+
+:hover > .ac-spotlight { opacity: 1; }
+
+@media (hover: none) {
+  .ac-spotlight { display: none; }
+}

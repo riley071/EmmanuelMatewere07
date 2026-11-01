@@ -5,6 +5,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LaunchIcon from "@mui/icons-material/Launch";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "../assets/styles/Project.scss";
+import threadmwPreview from "../assets/images/THREADMW.png";
+import nsimabeatsPreview from "../assets/images/NSIMABEATS.png";
+import sgmPreview from "../assets/images/SGM.png";
+import sekuluPreview from "../assets/images/SEKULU.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,7 +61,7 @@ const PROJECTS: ProjectData[] = [
   {
     category: "E-commerce Platform",
     title: "ThreadMW",
-    image: "/images/projects/threadmw.png",
+    image: threadmwPreview,
     shortTitle: "Fashion storefront",
     mark: "T",
     accent: "coral",
@@ -83,7 +87,7 @@ const PROJECTS: ProjectData[] = [
   {
     category: "Digital Marketplace",
     title: "NsimaBeats",
-    image: "/images/projects/nsimabeats.png",
+    image: nsimabeatsPreview,
     shortTitle: "Music marketplace",
     mark: "N",
     accent: "teal",
@@ -109,7 +113,7 @@ const PROJECTS: ProjectData[] = [
   {
     category: "Business Website",
     title: "SGM Technology Solutions",
-    image: "/images/projects/sgm.png",
+    image: sgmPreview,
     shortTitle: "IT & AI consultancy",
     mark: "SGM",
     accent: "blue",
@@ -143,7 +147,7 @@ const PROJECTS: ProjectData[] = [
   {
     category: "E-commerce / Business Website",
     title: "Sekulu265",
-    image: "/images/projects/sekulu265.png",
+    image: sekuluPreview,
     shortTitle: "Footwear commerce",
     mark: "S",
     accent: "lime",
@@ -233,7 +237,7 @@ function Project() {
                   {showScreenshot && (
                     <img
                       className="proj-screenshot"
-                      src={`${process.env.PUBLIC_URL}${p.image}`}
+                      src={p.image}
                       alt={`${p.title} homepage`}
                       loading="lazy"
                       width={1280}

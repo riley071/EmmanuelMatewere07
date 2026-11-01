@@ -1,126 +1,240 @@
 .tl-section {
+  position: relative;
   padding: 8rem 2rem;
+  overflow: hidden;
+  isolation: isolate;
   background: var(--bg-secondary);
+
+  /* ambient drifting orbs */
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+    pointer-events: none;
+    animation: tl-drift 22s ease-in-out infinite alternate;
+  }
+  &::before {
+    top: 6%;
+    right: -150px;
+    background: var(--accent-purple);
+  }
+  &::after {
+    bottom: 4%;
+    left: -150px;
+    background: var(--accent-teal);
+    animation-delay: -11s;
+  }
 }
 
 .tl-wrap {
-  max-width: 1200px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .tl-block .section-header { text-align: left; }
 
-/* ── The line + items ───────────────────────────────── */
+/* -- The line + items ------------------------------------------ */
 .tl-list {
+  --tl-icon: 48px;
+  --tl-gap: 1.5rem;
   position: relative;
   display: flex;
   flex-direction: column;
 
-  /* vertical gradient track */
+  /* faint base track */
   &::before {
-    content: '';
+    content: "";
     position: absolute;
-    left: 23px;
-    top: 0; bottom: 0;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--tl-icon) / 2 - 0.5px);
     width: 1px;
-    background: linear-gradient(
-      to bottom,
-      var(--accent-orange),
-      var(--accent-purple) 60%,
-      transparent
-    );
+    background: var(--border);
   }
+}
+
+/* Scroll-driven fill (framer-motion scales it with scrollYProgress).
+   This span had no styles before, so the progress line was invisible. */
+.timeline-progress {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--tl-icon) / 2 - 1px);
+  z-index: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--accent-orange),
+    var(--accent-purple) 60%,
+    var(--accent-teal)
+  );
+  box-shadow:
+    0 0 12px rgba(255, 107, 53, 0.5),
+    0 0 26px rgba(124, 58, 237, 0.3);
+  transform-origin: top center;
+  pointer-events: none;
 }
 
 .tl-item {
-  display: flex;
-  gap: 1.5rem;
-  padding-bottom: 2.5rem;
+  --tl-c: #7c3aed;
+  --tl-rgb: 124, 58, 237;
   position: relative;
+  display: flex;
+  gap: var(--tl-gap);
+  padding-bottom: 2.5rem;
 
   &:last-child { padding-bottom: 0; }
 
-  &:hover .tl-body {
-    border-color: var(--border-hover);
-    transform: translateX(6px);
+  /* education / certification items use the teal palette */
+  &:has(.tl-icon.edu) {
+    --tl-c: #00c2b8;
+    --tl-rgb: 0, 194, 184;
   }
 
-  &:hover .tl-icon {
-    transform: scale(1.15);
+  &:hover {
+    .tl-body {
+      border-color: rgba(var(--tl-rgb), 0.5);
+      transform: translateX(6px);
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.25),
+        0 0 30px rgba(var(--tl-rgb), 0.12);
+
+      &::before { width: calc(var(--tl-gap) + 6px); }
+    }
+
+    .tl-icon {
+      transform: scale(1.15) rotate(-6deg);
+
+      svg { animation: tl-wiggle 0.6s ease; }
+    }
+
+    .tl-tag { transform: translateY(-2px); }
   }
 }
 
-/* Icon node */
+/* -- Icon node ------------------------------------------------- */
 .tl-icon {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
   position: relative;
   z-index: 1;
-  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--tl-icon);
+  height: var(--tl-icon);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1rem;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   &.work {
     background: linear-gradient(135deg, #5000ca, #7c3aed);
-    color: #fff;
-    box-shadow: 0 4px 18px rgba(124,58,237,0.4);
   }
-
   &.edu {
     background: linear-gradient(135deg, #0073e6, #00d4aa);
-    color: #fff;
-    box-shadow: 0 4px 18px rgba(0,115,230,0.4);
   }
+
+  /* the ring in the bg color makes the line look broken around each node */
+  box-shadow:
+    0 0 0 5px var(--bg-secondary),
+    0 4px 18px rgba(var(--tl-rgb), 0.45);
 }
 
-/* Content card */
+/* the most recent entry in each list pings softly */
+.tl-item:nth-child(2) .tl-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--tl-c);
+  border-radius: 50%;
+  animation: tl-ping 2.6s ease-out infinite;
+  pointer-events: none;
+}
+
+/* -- Content card ---------------------------------------------- */
 .tl-body {
+  position: relative;
   flex: 1;
-  background: var(--bg-card);
+  padding: 1.4rem 1.5rem;
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 1.4rem 1.5rem;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(var(--tl-rgb), 0.09), transparent 50%),
+    var(--bg-card);
+  transition:
+    border-color 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+
+  /* connector from the node to the card */
+  &::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--tl-icon) / 2);
+    right: 100%;
+    width: var(--tl-gap);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(var(--tl-rgb), 0.7), var(--border));
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 }
 
 .tl-date {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.7rem;
+  padding: 0.22rem 0.7rem;
+  border: 1px solid rgba(255, 107, 53, 0.22);
+  border-radius: 50px;
+  background: rgba(255, 107, 53, 0.08);
   color: var(--accent-orange);
-  margin-bottom: 0.45rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  &::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 8px currentColor;
+  }
 }
 
 .tl-role {
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.25rem;
   line-height: 1.3;
 }
 
 .tl-company {
+  margin-bottom: 0.7rem;
+  color: var(--text-secondary);
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--text-secondary);
-  margin-bottom: 0.7rem;
 }
 
 .tl-desc {
-  font-size: 0.86rem;
-  color: var(--text-muted);
-  line-height: 1.65;
   margin-bottom: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.65;
 }
 
 .tl-tags {
@@ -134,18 +248,77 @@
   border-radius: 50px;
   font-size: 0.7rem;
   font-weight: 600;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   &.work-tag {
-    background: rgba(124,58,237,0.1);
-    border: 1px solid rgba(124,58,237,0.25);
+    border: 1px solid rgba(124, 58, 237, 0.25);
+    background: rgba(124, 58, 237, 0.1);
     color: #a78bfa;
+  }
+
+  /* ripple stagger on hover */
+  @for $i from 1 through 7 {
+    &:nth-child(#{$i}) { transition-delay: #{($i - 1) * 35}ms; }
   }
 }
 
-/* Responsive */
+.tl-item:focus-within .tl-body { border-color: rgba(var(--tl-rgb), 0.5); }
+
+/* -- Keyframes ------------------------------------------------- */
+@keyframes tl-ping {
+  0%   { opacity: 0.7; transform: scale(1); }
+  70%  { opacity: 0;   transform: scale(1.6); }
+  100% { opacity: 0;   transform: scale(1.6); }
+}
+@keyframes tl-wiggle {
+  0%, 100% { transform: rotate(0); }
+  30%      { transform: rotate(14deg); }
+  60%      { transform: rotate(-10deg); }
+}
+@keyframes tl-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-50px, 40px) scale(1.2); }
+}
+
+/* -- Responsive ------------------------------------------------ */
 @media (max-width: 900px) {
   .tl-wrap {
     grid-template-columns: 1fr;
     gap: 4rem;
   }
+}
+
+@media (max-width: 480px) {
+  .tl-section { padding: 6rem 1.2rem; }
+
+  .tl-list {
+    --tl-icon: 40px;
+    --tl-gap: 1rem;
+  }
+  .tl-icon { font-size: 0.85rem; }
+  .tl-body { padding: 1.1rem 1.15rem; }
+}
+
+/* Touch: no sticky hover shift */
+@media (hover: none) {
+  .tl-item:hover .tl-body,
+  .tl-item:hover .tl-icon,
+  .tl-item:hover .tl-tag { transform: none; }
+}
+
+/* -- Reduced motion -------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .tl-section::before,
+  .tl-section::after,
+  .tl-item:nth-child(2) .tl-icon::after,
+  .tl-item:hover .tl-icon svg { animation: none; }
+
+  .tl-body,
+  .tl-body::before,
+  .tl-icon,
+  .tl-tag { transition: none; }
+
+  .tl-item:hover .tl-body,
+  .tl-item:hover .tl-icon,
+  .tl-item:hover .tl-tag { transform: none; }
 }

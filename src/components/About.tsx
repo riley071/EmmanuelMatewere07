@@ -16,7 +16,7 @@ function About() {
           <motion.span className="about-accent" initial={reduced ? false : { scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: .8 }} />
         </div>
         <div className="about-grid">
-          <AnimatedCard className="about-profile">
+          <AnimatedCard className="about-profile" spotlight={false}>
             <img
               src={`${process.env.PUBLIC_URL}/emmanuel profile img.png`}
               alt="Emmanuel Matewere, full-stack developer from Malawi"
