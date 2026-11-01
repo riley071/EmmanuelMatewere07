@@ -1,8 +1,12 @@
 import AnimatedCard from "./AnimatedCard";
-import React, { useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LaunchIcon from "@mui/icons-material/Launch";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "../assets/styles/Project.scss";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type ProjectData = {
   category: string;
@@ -161,9 +165,45 @@ const PROJECTS: ProjectData[] = [
 
 function Project() {
   const [openCaseStudy, setOpenCaseStudy] = useState<string | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    const media = gsap.matchMedia();
+
+    // Reverting the media context also restores the static preview if the
+    // visitor enables reduced motion while an animation is running.
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      sectionRef.current?.querySelectorAll<HTMLElement>(".proj-preview").forEach((preview) => {
+        const select = gsap.utils.selector(preview);
+        gsap.timeline({
+          defaults: { ease: "power2.out" },
+          scrollTrigger: {
+            trigger: preview,
+            start: "top 88%",
+            once: true,
+          },
+        })
+          .from(select(".preview-brand"), { opacity: 0, y: 8, duration: 0.3 })
+          .from(select(".preview-sidebar i"), {
+            opacity: 0, x: -6, duration: 0.25, stagger: 0.04,
+          }, 0.1)
+          .from(select(".preview-kicker, .preview-heading"), {
+            opacity: 0, y: 6, duration: 0.3, stagger: 0.05,
+          }, 0.15)
+          .from(select(".preview-metrics i"), {
+            opacity: 0, y: 8, duration: 0.3, stagger: 0.06,
+          }, 0.25)
+          .from(select(".preview-chart b"), {
+            scaleY: 0, transformOrigin: "center bottom", duration: 0.45, stagger: 0.04,
+          }, 0.4);
+      });
+    }, sectionRef);
+
+    return () => media.revert();
+  }, []);
 
   return (
-    <section className="proj-section" id="projects">
+    <section className="proj-section" id="projects" ref={sectionRef}>
       <div className="proj-wrap">
         <div className="section-header proj-header">
           <span className="section-label">Selected Projects</span>
