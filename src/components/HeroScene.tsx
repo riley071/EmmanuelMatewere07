@@ -1,6 +1,7 @@
 import React, { Component, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial } from "@react-three/drei";
+import { Points } from "@react-three/drei/core/Points";
+import { PointMaterial } from "@react-three/drei/core/PointMaterial";
 import { Color, Group } from "three";
 import { useInView, useReducedMotion } from "framer-motion";
 
