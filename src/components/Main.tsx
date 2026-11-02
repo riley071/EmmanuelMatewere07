@@ -89,12 +89,14 @@ function Main() {
           </motion.p>
 
           <motion.div variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }} className="hero-cta">
-            <button
+            <a
               className="btn-primary"
-              onClick={() => scrollTo("contact")}
+              href="https://wa.me/265994167753"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Hire me <span className="btn-arrow">→</span>
-            </button>
+            </a>
             <button className="btn-ghost" onClick={() => scrollTo("projects")}>
               View my work
             </button>

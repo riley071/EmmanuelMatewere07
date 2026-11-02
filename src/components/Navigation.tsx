@@ -97,13 +97,14 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
             >
               {mobileOpen ? <CloseIcon /> : <MenuIcon />}
             </button>
-            <button
-              type="button"
+            <a
               className="nav-link nav-hire"
-              onClick={() => scrollTo("contact")}
+              href="https://wa.me/265994167753"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Hire me
-            </button>
+            </a>
           </div>
         </div>
       </nav>
@@ -121,6 +122,20 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
       <div className={`mobile-drawer ${mobileOpen ? "open" : ""}`}>
         <div className="drawer-inner">
           {NAV_ITEMS.map(({ label, id }, i) => (
+            id === "contact" ? (
+              <a
+                key={id}
+                className="drawer-link nav-hire"
+                href="https://wa.me/265994167753"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ transitionDelay: mobileOpen ? `${i * 55}ms` : "0ms" }}
+                onClick={() => setMobileOpen(false)}
+              >
+                <span className="drawer-num">0{i + 1}</span>
+                {label}
+              </a>
+            ) : (
             <button
               key={id}
               className={`drawer-link ${id === "contact" ? "nav-hire" : ""} ${activeSection === id ? "active" : ""}`}
@@ -130,6 +145,7 @@ function Navigation({ parentToChild, modeChange }: NavigationProps) {
               <span className="drawer-num">0{i + 1}</span>
               {label}
             </button>
+            )
           ))}
         </div>
       </div>
